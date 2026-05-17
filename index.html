@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERTSOLARCO - Powering Tomorrow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="static/logos/logo.jpg.jpeg">
+    <style>
+        :root {
+            --bg: #05051a;
+            --gold: #f0a840;
+            --gold-bright: #ffc564;
+            --white: #f4f4f6;
+            --panel-blue: #1a3550;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            overflow: hidden;
+            font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+            height: 100vh;
+            width: 100vw;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+            cursor: default;
+        }
+
+        #three-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: block;
+        }
+
+        /* ---- OVERLAY ---- */
+        .overlay {
+            position: fixed;
+            z-index: 10;
+            inset: 0;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ---- COMPANY NAME ---- */
+        .brand-block {
+            text-align: center;
+            margin-bottom: 2vh;
+        }
+        .company-name {
+            font-size: clamp(2.2rem, 6vw, 5rem);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--white);
+            text-shadow: 0 0 60px rgba(240, 168, 64, 0.55), 0 0 120px rgba(240, 140, 30, 0.35), 0 2px 4px rgba(0, 0, 0, 0.6);
+            line-height: 1;
+            animation: nameGlowPulse 3.5s ease-in-out infinite;
+        }
+        .company-name .accent {
+            color: var(--gold-bright);
+            text-shadow: 0 0 70px rgba(255, 180, 60, 0.8), 0 0 150px rgba(255, 150, 30, 0.5);
+        }
+        .tagline {
+            font-size: clamp(0.8rem, 2vw, 1.25rem);
+            font-weight: 300;
+            letter-spacing: 0.28em;
+            color: rgba(220, 210, 190, 0.85);
+            margin-top: 0.4rem;
+            text-shadow: 0 0 20px rgba(200, 160, 100, 0.4);
+            text-transform: uppercase;
+        }
+
+        @keyframes nameGlowPulse {
+            0%,
+            100% {
+                text-shadow: 0 0 60px rgba(240, 168, 64, 0.55), 0 0 120px rgba(240, 140, 30, 0.35), 0 2px 4px rgba(0, 0, 0, 0.6);
+            }
+            50% {
+                text-shadow: 0 0 80px rgba(255, 185, 70, 0.75), 0 0 160px rgba(255, 155, 40, 0.55), 0 2px 4px rgba(0, 0, 0, 0.6);
+            }
+        }
+
+        /* ---- LOADING BLOCK ---- */
+        .loading-block {
+            position: absolute;
+            bottom: 10vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transition: opacity 0.7s ease;
+        }
+        .loading-block.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loading-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            color: rgba(200, 185, 155, 0.8);
+            text-transform: uppercase;
+        }
+        .progress-track {
+            width: clamp(200px, 40vw, 380px);
+            height: 3px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.4);
+        }
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #e89820, #f5c45a, #ffda7a);
+            border-radius: 10px;
+            box-shadow: 0 0 14px rgba(245, 170, 50, 0.7), 0 0 40px rgba(240, 150, 40, 0.35);
+            transition: width 0.08s linear;
+            position: relative;
+        }
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #ffe9b0;
+            box-shadow: 0 0 16px #ffb840, 0 0 36px #ffa020;
+        }
+        .progress-percent {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            color: rgba(230, 210, 175, 0.9);
+            min-width: 42px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(200, 150, 80, 0.5);
+        }
+
+        /* ---- COMPLETION PULSE ---- */
+        .completion-indicator {
+            position: absolute;
+            bottom: 4vh;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            color: rgba(240, 200, 130, 0);
+            text-transform: uppercase;
+            transition: color 0.6s ease, text-shadow 0.6s ease;
+            pointer-events: none;
+        }
+        .completion-indicator.visible {
+            color: rgba(240, 200, 130, 0.9);
+            text-shadow: 0 0 25px rgba(240, 170, 60, 0.6);
+            animation: completionPulse 2s ease-in-out infinite;
+        }
+        @keyframes completionPulse {
+            0%,
+            100% {
+                opacity: 0.75;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 600px) {
+            .company-name {
+                letter-spacing: 0.08em;
+            }
+            .tagline {
+                letter-spacing: 0.18em;
+            }
+            .progress-track {
+                width: 65vw;
+            }
+            .loading-block {
+                bottom: 12vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Three.js Canvas -->
+    <canvas id="three-canvas"></canvas>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay">
+        <div class="brand-block">
+            <h1 class="company-name">
+                VERT<span class="accent">SOLAR</span>CO
+            </h1>
+            <p class="tagline">Powering Tomorrow</p>
+        </div>
+        <div class="loading-block" id="loadingBlock">
+            <span class="loading-label">Loading</span>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-percent" id="progressPercent">0%</span>
+        </div>
+        <div class="completion-indicator" id="completionIndicator">Ready</div>
+    </div>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js">
+    </script>
+
+    <script>
+        (function() {
+            // ─────────────────────────────────────
+            // DOM ELEMENTS
+            // ─────────────────────────────────────
+            const canvas = document.getElementById('three-canvas');
+            const progressFill = document.getElementById('progressFill');
+            const progressPercent = document.getElementById('progressPercent');
+            const loadingBlock = document.getElementById('loadingBlock');
+            const completionIndicator = document.getElementById('completionIndicator');
+
+            // ─────────────────────────────────────
+            // THREE.JS SETUP
+            // ─────────────────────────────────────
+            const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.toneMappingExposure = 1.3;
+            renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color('#05051a');
+            scene.fog = new THREE.FogExp2('#05051a', 0.00008);
+
+            const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.5, 80);
+            camera.position.set(7, 4.5, 15);
+            camera.lookAt(0, 0, 0);
+
+            // ─────────────────────────────────────
+            // LIGHTING
+            // ─────────────────────────────────────
+            const ambientLight = new THREE.AmbientLight('#1a2a40', 0.7);
+            scene.add(ambientLight);
+
+            const sunLight = new THREE.PointLight('#ffc080', 80, 35, 0.6);
+            sunLight.position.set(0, 0, 0);
+            sunLight.castShadow = true;
+            sunLight.shadow.mapSize.width = 1024;
+            sunLight.shadow.mapSize.height = 1024;
+            sunLight.shadow.camera.near = 0.3;
+            sunLight.shadow.camera.far = 40;
+            sunLight.shadow.bias = -0.0001;
+            sunLight.shadow.radius = 2.5;
+            scene.add(sunLight);
+
+            const fillLight = new THREE.PointLight('#ffd4a0', 15, 25, 0.5);
+            fillLight.position.set(3, 2, -4);
+            scene.add(fillLight);
+
+            // ─────────────────────────────────────
+            // HELPER: Canvas Texture Creator
+            // ─────────────────────────────────────
+            function createGlowTexture(innerColor, outerColor, size = 256) {
+                const c = document.createElement('canvas');
+                c.width = size;
+                c.height = size;
+                const ctx = c.getContext('2d');
+                const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+                gradient.addColorStop(0, innerColor);
+                gradient.addColorStop(0.15, innerColor);
+                gradient.addColorStop(0.5, outerColor);
+                gradient.addColorStop(1, 'transparent');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, size, size);
+                const tex = new THREE.CanvasTexture(c);
+                tex.needsUpdate = true;
+                tex.minFilter = THREE.LinearFilter;
+                tex.magFilter = THREE.LinearFilter;
+                return tex;
+            }
+
+            function createSolarPanelTexture(width = 256, height = 512) {
+                const c = document.createElement('canvas');
+                c.width = width;
+                c.height = height;
+                const ctx = c.getContext('2d');
+
+                // Base dark blue
+                ctx.fillStyle = '#15283d';
+                ctx.fillRect(0, 0, width, height);
+
+                // Subtle gradient overlay
+                const grad = ctx.createLinearGradient(0, 0, width, height);
+                grad.addColorStop(0, 'rgba(30,60,100,0.5)');
+                grad.addColorStop(0.5, 'rgba(20,45,75,0.3)');
+                grad.addColorStop(1, 'rgba(15,35,60,0.5)');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, width, height);
+
+                // Grid lines (simulating PV cells)
+                const cols = 8;
+                const rows = 16;
+                const cellW = width / cols;
+                const cellH = height / rows;
+                ctx.strokeStyle = 'rgba(160,190,210,0.35)';
+                ctx.lineWidth = 1.2;
+                for (let i = 0; i <= cols; i++) {
+                    const x = i * cellW;
+                    ctx.beginPath();
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, height);
+                    ctx.stroke();
+                }
+                for (let j = 0; j <= rows; j++) {
+                    const y = j * cellH;
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(width, y);
+                    ctx.stroke();
+                }
+
+                // Metallic border
+                ctx.strokeStyle = 'rgba(180,200,215,0.55)';
+                ctx.lineWidth = 3;
+                ctx.strokeRect(1.5, 1.5, width - 3, height - 3);
+
+                // Subtle inner highlight
+                ctx.strokeStyle = 'rgba(210,225,240,0.25)';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(6, 6, width - 12, height - 12);
+
+                const tex = new THREE.CanvasTexture(c);
+                tex.needsUpdate = true;
+                tex.wrapS = THREE.RepeatWrapping;
+                tex.wrapT = THREE.RepeatWrapping;
+                tex.minFilter = THREE.LinearMipmapLinearFilter;
+                tex.magFilter = THREE.LinearFilter;
+                tex.generateMipmaps = true;
+                return tex;
+            }
+
+            // ─────────────────────────────────────
+            // SUN + GLOW
+            // ─────────────────────────────────────
+            const sunGroup = new THREE.Group();
+            scene.add(sunGroup);
+
+            // Sun core
+            const sunGeo = new THREE.SphereGeometry(1.35, 64, 64);
+            const sunMat = new THREE.MeshBasicMaterial({ color: '#ffb440' });
+            const sunCore = new THREE.Mesh(sunGeo, sunMat);
+            sunGroup.add(sunCore);
+
+            // Inner bright hotspot
+            const hotspotGeo = new THREE.SphereGeometry(0.85, 48, 48);
+            const hotspotMat = new THREE.MeshBasicMaterial({ color: '#ffe8c0' });
+            const hotspot = new THREE.Mesh(hotspotGeo, hotspotMat);
+            sunGroup.add(hotspot);
+
+            // Glow layers (sprites)
+            const glowTex1 = createGlowTexture('rgba(255,180,50,1)', 'rgba(255,120,20,0.55)', 512);
+            const glowTex2 = createGlowTexture('rgba(255,160,40,0.85)', 'rgba(255,90,10,0.25)', 512);
+            const glowTex3 = createGlowTexture('rgba(255,140,30,0.5)', 'rgba(255,60,5,0.08)', 512);
+
+            function createGlowSprite(texture, scale, opacity) {
+                const mat = new THREE.SpriteMaterial({
+                    map: texture,
+                    blending: THREE.AdditiveBlending,
+                    depthWrite: false,
+                    depthTest: true,
+                    transparent: true,
+                    opacity: opacity,
+                });
+                const sprite = new THREE.Sprite(mat);
+                sprite.scale.set(scale, scale, 1);
+                return sprite;
+            }
+
+            const glowSprite1 = createGlowSprite(glowTex1, 5.5, 0.9);
+            const glowSprite2 = createGlowSprite(glowTex2, 10, 0.55);
+            const glowSprite3 = createGlowSprite(glowTex3, 16, 0.3);
+            sunGroup.add(glowSprite1, glowSprite2, glowSprite3);
+
+            // ─────────────────────────────────────
+            // SOLAR PANEL GROUPS
+            // ─────────────────────────────────────
+            const panelTexture = createSolarPanelTexture();
+            const allPanelGroups = [];
+
+            function createPanelGroup(numPanels, orbitRadius, startAngle, yOffset, panelWidth, panelHeight) {
+                const group = new THREE.Group();
+                group.position.y = yOffset;
+                group.userData = {
+                    orbitRadius,
+                    angle: startAngle,
+                    orbitSpeed: 0.08 + Math.random() * 0.22,
+                    yOffset,
+                };
+
+                const panelDepth = 0.06;
+                const gap = 0.2;
+
+                for (let i = 0; i < numPanels; i++) {
+                    const panelGeo = new THREE.BoxGeometry(panelWidth, panelHeight, panelDepth, 2, 2, 1);
+                    const panelMat = new THREE.MeshStandardMaterial({
+                        map: panelTexture,
+                        color: '#c8d8e8',
+                        roughness: 0.45,
+                        metalness: 0.55,
+                    });
+                    const panel = new THREE.Mesh(panelGeo, panelMat);
+                    panel.castShadow = true;
+                    panel.receiveShadow = true;
+
+                    // Arrange panels side by side along local X
+                    const offsetX = (i - (numPanels - 1) / 2) * (panelWidth + gap);
+                    panel.position.set(offsetX, 0, 0);
+
+                    // Slight random tilt
+                    panel.rotation.x = (Math.random() - 0.5) * 0.2;
+                    panel.rotation.z = (Math.random() - 0.5) * 0.15;
+
+                    group.add(panel);
+                }
+
+                // Position group at its orbital distance
+                group.position.x = Math.cos(startAngle) * orbitRadius;
+                group.position.z = Math.sin(startAngle) * orbitRadius;
+
+                // Rotate group so panels face the sun radially
+                group.rotation.y = -startAngle + Math.PI / 2;
+
+                scene.add(group);
+                allPanelGroups.push(group);
+                return group;
+            }
+
+            // Create panel groups at different orbital distances
+            createPanelGroup(3, 3.8, 0, 0.25, 0.75, 1.6);
+            createPanelGroup(4, 5.6, Math.PI / 3, -0.35, 0.7, 1.45);
+            createPanelGroup(3, 7.4, Math.PI * 1.4, 0.5, 0.8, 1.7);
+            createPanelGroup(4, 9.2, Math.PI * 0.7, -0.2, 0.72, 1.5);
+            createPanelGroup(3, 6.5, Math.PI * 1.9, 0.6, 0.68, 1.35);
+            createPanelGroup(3, 8.3, Math.PI * 0.35, -0.55, 0.78, 1.55);
+
+            // ─────────────────────────────────────
+            // ORBITAL RINGS
+            // ─────────────────────────────────────
+            const ringRadii = [3.8, 5.6, 6.5, 7.4, 8.3, 9.2];
+            const ringGroup = new THREE.Group();
+            scene.add(ringGroup);
+
+            ringRadii.forEach((radius, idx) => {
+                const ringGeo = new THREE.TorusGeometry(radius, 0.015, 16, 180);
+                const ringMat = new THREE.MeshBasicMaterial({
+                    color: new THREE.Color('#ffc880'),
+                    transparent: true,
+                    opacity: 0.18 + idx * 0.015,
+                    depthWrite: false,
+                });
+                const ring = new THREE.Mesh(ringGeo, ringMat);
+                ring.rotation.x = Math.PI / 2;
+                ring.position.y = 0;
+                ringGroup.add(ring);
+
+                // Second thinner ring slightly offset
+                const ring2Geo = new THREE.TorusGeometry(radius, 0.008, 12, 160);
+                const ring2Mat = new THREE.MeshBasicMaterial({
+                    color: new THREE.Color('#ffe0b0'),
+                    transparent: true,
+                    opacity: 0.1 + idx * 0.012,
+                    depthWrite: false,
+                });
+                const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+                ring2.rotation.x = Math.PI / 2 + 0.08;
+                ring2.position.y = 0.15;
+                ringGroup.add(ring2);
+            });
+
+            // ─────────────────────────────────────
+            // ENERGY PARTICLES (emanating from sun)
+            // ─────────────────────────────────────
+            const numEnergyParticles = 280;
+            const energyParticlesGeo = new THREE.BufferGeometry();
+            const energyPositions = new Float32Array(numEnergyParticles * 3);
+            const energyColors = new Float32Array(numEnergyParticles * 3);
+            const energyData = []; // store per-particle data
+
+            const sunSurfaceRadius = 1.45;
+
+            for (let i = 0; i < numEnergyParticles; i++) {
+                // Random point on sphere surface
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.acos(2 * Math.random() - 1);
+                const r = sunSurfaceRadius + Math.random() * 0.3;
+
+                const x = r * Math.sin(phi) * Math.cos(theta);
+                const y = r * Math.sin(phi) * Math.sin(theta);
+                const z = r * Math.cos(phi);
+
+                energyPositions[i * 3] = x;
+                energyPositions[i * 3 + 1] = y;
+                energyPositions[i * 3 + 2] = z;
+
+                // Warm colors
+                const colorChoice = Math.random();
+                if (colorChoice < 0.5) {
+                    energyColors[i * 3] = 1;
+                    energyColors[i * 3 + 1] = 0.65;
+                    energyColors[i * 3 + 2] = 0.2;
+                } else if (colorChoice < 0.8) {
+                    energyColors[i * 3] = 1;
+                    energyColors[i * 3 + 1] = 0.85;
+                    energyColors[i * 3 + 2] = 0.5;
+                } else {
+                    energyColors[i * 3] = 1;
+                    energyColors[i * 3 + 1] = 0.5;
+                    energyColors[i * 3 + 2] = 0.1;
+                }
+
+                const speed = 0.6 + Math.random() * 3.5;
+                const maxDist = 5 + Math.random() * 12;
+                energyData.push({
+                    theta,
+                    phi,
+                    baseR: r,
+                    speed,
+                    maxDist,
+                    currentR: r,
+                });
+            }
+
+            energyParticlesGeo.setAttribute('position', new THREE.BufferAttribute(energyPositions, 3));
+            energyParticlesGeo.setAttribute('color', new THREE.BufferAttribute(energyColors, 3));
+
+            const energyParticlesMat = new THREE.PointsMaterial({
+                size: 0.06,
+                vertexColors: true,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+                transparent: true,
+                opacity: 0.8,
+            });
+            const energyParticles = new THREE.Points(energyParticlesGeo, energyParticlesMat);
+            scene.add(energyParticles);
+
+            // ─────────────────────────────────────
+            // AMBIENT FLOATING DUST
+            // ─────────────────────────────────────
+            const numDust = 160;
+            const dustGeo = new THREE.BufferGeometry();
+            const dustPositions = new Float32Array(numDust * 3);
+            const dustData = [];
+
+            for (let i = 0; i < numDust; i++) {
+                const r = 2.5 + Math.random() * 16;
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.acos(2 * Math.random() - 1);
+                dustPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+                dustPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+                dustPositions[i * 3 + 2] = r * Math.cos(phi);
+                dustData.push({
+                    baseX: dustPositions[i * 3],
+                    baseY: dustPositions[i * 3 + 1],
+                    baseZ: dustPositions[i * 3 + 2],
+                    driftAmp: 0.1 + Math.random() * 0.6,
+                    driftSpeed: 0.2 + Math.random() * 0.9,
+                    phase: Math.random() * Math.PI * 2,
+                });
+            }
+            dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
+            const dustMat = new THREE.PointsMaterial({
+                size: 0.04,
+                color: '#ffe4c0',
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+                transparent: true,
+                opacity: 0.5,
+            });
+            const dustPoints = new THREE.Points(dustGeo, dustMat);
+            scene.add(dustPoints);
+
+            // ─────────────────────────────────────
+            // STARFIELD BACKGROUND
+            // ─────────────────────────────────────
+            const numStars = 600;
+            const starsGeo = new THREE.BufferGeometry();
+            const starsPositions = new Float32Array(numStars * 3);
+            for (let i = 0; i < numStars; i++) {
+                const r = 20 + Math.random() * 30;
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.acos(2 * Math.random() - 1);
+                starsPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+                starsPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+                starsPositions[i * 3 + 2] = r * Math.cos(phi);
+            }
+            starsGeo.setAttribute('position', new THREE.BufferAttribute(starsPositions, 3));
+            const starsMat = new THREE.PointsMaterial({
+                size: 0.08,
+                color: '#ffffff',
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+                transparent: true,
+                opacity: 0.7,
+            });
+            const stars = new THREE.Points(starsGeo, starsMat);
+            scene.add(stars);
+
+            // ─────────────────────────────────────
+            // ANIMATION LOOP
+            // ─────────────────────────────────────
+            const clock = new THREE.Clock();
+            const LOAD_DURATION = 5.0; // seconds
+            const FADE_OUT_DURATION = 0.7; // seconds after loading completes
+            let loadingComplete = false;
+            let fadeOutProgress = 0;
+            let elapsedTotal = 0;
+            let completionShown = false;
+
+            function animate(timestamp) {
+                requestAnimationFrame(animate);
+
+                const dt = Math.min(clock.getDelta(), 0.1);
+                elapsedTotal += dt;
+
+                // ── Loading progress ─────────────────
+                const loadProgress = Math.min(elapsedTotal / LOAD_DURATION, 1.0);
+                const percent = Math.round(loadProgress * 100);
+                progressFill.style.width = `${percent}%`;
+                progressPercent.textContent = `${percent}%`;
+
+                // ── Check loading completion ─────────
+                if (loadProgress >= 1.0 && !loadingComplete) {
+                    loadingComplete = true;
+                    // Start fade out
+                }
+
+                if (loadingComplete && fadeOutProgress < 1.0) {
+                    fadeOutProgress += dt / FADE_OUT_DURATION;
+                    if (fadeOutProgress >= 1.0) {
+                        fadeOutProgress = 1.0;
+                        loadingBlock.classList.add('fade-out');
+                        if (!completionShown) {
+                            completionShown = true;
+                            completionIndicator.classList.add('visible');
+                        }
+                    }
+                    // Gradually reduce opacity
+                    const opacity = 1.0 - fadeOutProgress;
+                    loadingBlock.style.opacity = Math.max(0, opacity);
+                }
+
+                // ── Sun pulsation ────────────────────
+                const pulse = 1 + Math.sin(elapsedTotal * 2.5) * 0.04 + Math.sin(elapsedTotal * 5.7) * 0.025;
+                sunCore.scale.setScalar(pulse);
+                hotspot.scale.setScalar(pulse * 0.95);
+                glowSprite1.scale.setScalar(5.5 + Math.sin(elapsedTotal * 3.1) * 0.4);
+                glowSprite2.scale.setScalar(10 + Math.sin(elapsedTotal * 2.3) * 0.7);
+                glowSprite3.scale.setScalar(16 + Math.sin(elapsedTotal * 1.7) * 1.0);
+                sunLight.intensity = 80 + Math.sin(elapsedTotal * 3.5) * 5;
+                glowSprite1.material.opacity = 0.85 + Math.sin(elapsedTotal * 4) * 0.1;
+                glowSprite2.material.opacity = 0.5 + Math.sin(elapsedTotal * 3.3) * 0.08;
+
+                // ── Orbit panel groups ───────────────
+                allPanelGroups.forEach((group) => {
+                    group.userData.angle += group.userData.orbitSpeed * dt;
+                    const a = group.userData.angle;
+                    const r = group.userData.orbitRadius;
+                    group.position.x = Math.cos(a) * r;
+                    group.position.z = Math.sin(a) * r;
+                    // Keep panels facing radially toward sun
+                    group.rotation.y = -a + Math.PI / 2;
+                    // Slight bobbing
+                    group.position.y = group.userData.yOffset + Math.sin(elapsedTotal * 1.5 + a) * 0.2;
+                });
+
+                // ── Rotate rings slowly ──────────────
+                ringGroup.rotation.y += dt * 0.04;
+                ringGroup.rotation.x += dt * 0.015;
+
+                // ── Update energy particles ──────────
+                const posArr = energyParticlesGeo.attributes.position.array;
+                for (let i = 0; i < numEnergyParticles; i++) {
+                    const data = energyData[i];
+                    data.currentR += data.speed * dt;
+                    if (data.currentR > data.maxDist) {
+                        // Reset to surface
+                        data.currentR = sunSurfaceRadius + Math.random() * 0.3;
+                        data.theta = Math.random() * Math.PI * 2;
+                        data.phi = Math.acos(2 * Math.random() - 1);
+                        data.maxDist = 5 + Math.random() * 12;
+                        data.speed = 0.6 + Math.random() * 3.5;
+                    }
+                    const r = data.currentR;
+                    posArr[i * 3] = r * Math.sin(data.phi) * Math.cos(data.theta);
+                    posArr[i * 3 + 1] = r * Math.sin(data.phi) * Math.sin(data.theta);
+                    posArr[i * 3 + 2] = r * Math.cos(data.phi);
+                }
+                energyParticlesGeo.attributes.position.needsUpdate = true;
+
+                // ── Update ambient dust ──────────────
+                const dustArr = dustGeo.attributes.position.array;
+                for (let i = 0; i < numDust; i++) {
+                    const d = dustData[i];
+                    dustArr[i * 3] = d.baseX + Math.sin(elapsedTotal * d.driftSpeed + d.phase) * d.driftAmp;
+                    dustArr[i * 3 + 1] = d.baseY + Math.cos(elapsedTotal * d.driftSpeed * 0.7 + d.phase) * d.driftAmp;
+                    dustArr[i * 3 + 2] = d.baseZ + Math.sin(elapsedTotal * d.driftSpeed * 0.5 + d.phase + 1) * d
+                        .driftAmp;
+                }
+                dustGeo.attributes.position.needsUpdate = true;
+
+                // ── Subtle camera motion ─────────────
+                const camAngle = elapsedTotal * 0.12;
+                const camRadius = 15 + Math.sin(elapsedTotal * 0.4) * 1.5;
+                const camX = Math.cos(camAngle) * camRadius;
+                const camZ = Math.sin(camAngle) * camRadius;
+                const camY = 4.5 + Math.sin(elapsedTotal * 0.55) * 1.8;
+                camera.position.lerp(
+                    new THREE.Vector3(camX, camY, camZ),
+                    0.015
+                );
+                camera.lookAt(0, 0, 0);
+
+                // ── Slowly rotate starfield ──────────
+                stars.rotation.y += dt * 0.015;
+                stars.rotation.x += dt * 0.006;
+
+                // ── Render ───────────────────────────
+                renderer.render(scene, camera);
+            }
+
+            // ─────────────────────────────────────
+            // RESIZE HANDLER
+            // ─────────────────────────────────────
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            // ─────────────────────────────────────
+            // START
+            // ─────────────────────────────────────
+            // Initial render
+            renderer.render(scene, camera);
+            // Kick off animation
+            requestAnimationFrame(animate);
+
+            console.log('%c☀️ VERTSOLARCO %c— Solar Loading Experience Ready',
+                'color:#ffb440;font-size:1.2em;font-weight:bold;',
+                'color:#ccc;');
+            console.log('%cLoading for 5 seconds...', 'color:#aaa;font-style:italic;');
+        })();
+    </script>
+
+<script>
+    // Smooth redirect with fade-out effect after 5 seconds
+    setTimeout(function() {
+        // Add fade-out class to body
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '0';
+        
+        // Redirect after fade animation completes
+        setTimeout(function() {
+            window.location.href = 'home(en).html';
+        }, 400); // Wait for fade animation (0.5 seconds)
+    }, 1500);
+</script>l
+</body>
+</html>

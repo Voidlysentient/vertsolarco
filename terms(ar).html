@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شروط الخدمة | vertsolarco - حلول وهندسة الطاقة الشمسية</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@400;600;700;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="static/logos/logo.jpg.jpeg">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vertsolar: {
+                            green: '#39A935',
+                            greenHover: '#2d872a',
+                            blue: '#00244B',
+                            blueHover: '#001a36',
+                            yellow: '#F9A825',
+                            lightGreen: '#E8F5E9',
+                            darkBlue: '#001A35',
+                            grayBg: '#F8FAFC'
+                        },
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        },
+                        dark: '#0f0f0f',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Cairo', 'sans-serif'],
+                        heading: ['Lexend', 'Cairo', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 36, 75, 0.1);
+        }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #00244B; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #39A935; }
+        
+        .prose h2 {
+            font-family: 'Lexend', 'Cairo', sans-serif;
+            color: #00244B;
+            font-weight: 800;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            letter-spacing: -0.02em;
+        }
+        .prose h3 {
+            font-family: 'Lexend', 'Cairo', sans-serif;
+            color: #001A35;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.4rem;
+        }
+        .prose p, .prose li {
+            color: #4B5563;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+        .prose ul {
+            list-style-type: disc;
+            padding-right: 1.5rem;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+        .prose ul li {
+            margin-bottom: 0.5rem;
+        }
+        .prose strong {
+            color: #00244B;
+        }
+        .prose a {
+            color: #39A935;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        .prose a:hover {
+            color: #2d872a;
+        }
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(to left, #39A935, #F9A825, #39A935);
+            width: 80px;
+            margin: 2rem auto;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-white selection:bg-vertsolar-green selection:text-white">
+
+    <!-- الشريط العلوي -->
+    <aside class="bg-vertsolar-darkBlue text-gray-200 text-xs py-2 hidden lg:block z-50 relative border-b border-white/10" aria-label="شريط التواصل">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <address class="flex items-center space-x-6 space-x-reverse not-italic">
+                <a href="tel:+201002345678" class="flex items-center hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-vertsolar-green rounded">
+                    <svg class="w-4 h-4 ml-2 text-vertsolar-green" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    <span>الخط الساخن: +20 100 234 5678</span>
+                </a>
+                <a href="mailto:info@vertsolarco.com" class="flex items-center hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-vertsolar-green rounded">
+                    <svg class="w-4 h-4 ml-2 text-vertsolar-green" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    <span>info@vertsolarco.com</span>
+                </a>
+            </address>
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <span class="flex items-center">
+                    <svg class="w-4 h-4 ml-2 text-vertsolar-yellow" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>الأحد - الخميس: 9:00 ص - 5:00 م (توقيت القاهرة)</span>
+                </span>
+                <a href="terms.html" lang="en" class="hover:text-white transition font-bold border-r border-gray-600 pr-4 focus:outline-none focus:ring-2 focus:ring-vertsolar-green rounded">English</a>
+            </div>
+        </div>
+    </aside>
+
+
+    <!-- المحتوى الرئيسي -->
+    <main class="pt-28 pb-24 bg-vertsolar-grayBg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- رأس الصفحة -->
+            <div class="text-center mb-16">
+                <span class="text-vertsolar-green font-bold tracking-widest text-sm uppercase">معلومات قانونية</span>
+                <h1 class="text-5xl lg:text-6xl font-black text-vertsolar-blue font-heading mt-4 mb-6 leading-tight">
+                    شروط الخدمة
+                </h1>
+                <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+                    يرجى قراءة هذه الشروط بعناية قبل استخدام موقعنا الإلكتروني أو التعاقد على خدماتنا الهندسية.
+                </p>
+                <p class="text-gray-400 text-sm mt-4">
+                    آخر تحديث: 15 مايو 2026
+                </p>
+                <div class="section-divider mx-auto"></div>
+            </div>
+
+            <!-- محتوى الشروط -->
+            <div class="bg-white rounded-[2rem] shadow-xl border border-gray-100 p-8 sm:p-12 lg:p-16 prose max-w-none">
+                
+                <h2>1. مقدمة وقبول الشروط</h2>
+                <p>
+                    مرحبًا بكم في <strong>شركة فيرتسولار لحلول وهندسة الطاقة الشمسية</strong> ("فيرتسولار"، "الشركة"، "نحن"، أو "خاصتنا"). من خلال الوصول إلى موقعنا الإلكتروني أو استخدامه على الرابط <a href="https://www.vertsolarco.com">www.vertsolarco.com</a> (الموقع الإلكتروني)، أو التعاقد على خدماتنا الاستشارية الهندسية، أو طلب عرض سعر، أو الدخول في أي اتفاقية تعاقدية معنا لتصميم أو توريد أو إنشاء أو تشغيل أو صيانة أنظمة الطاقة الشمسية (يُشار إليها مجتمعةً بـ "الخدمات")، فإنك ("العميل" أو "أنت") توافق على الالتزام بشروط الخدمة هذه ("الشروط").
+                </p>
+                <p>
+                    إذا كنت لا توافق على هذه الشروط بالكامل، فيجب عليك التوقف فورًا عن استخدام موقعنا الإلكتروني والامتناع عن التعاقد على خدماتنا. تنطبق هذه الشروط على جميع الزوار والمستخدمين والعملاء، بما في ذلك على سبيل المثال لا الحصر المقاولين والمقاولين من الباطن والعملاء النهائيين.
+                </p>
+
+                <h2>2. طبيعة الخدمات الهندسية</h2>
+                <p>
+                    تعمل شركة فيرتسولار <strong>كمقاول هندسة وتوريد وإنشاء (EPC)</strong> ومزود لاستشارات الطاقة الشمسية المتخصصة. تشمل خدماتنا على سبيل المثال لا الحصر:
+                </p>
+                <ul>
+                    <li><strong>دراسات الجدوى وتدقيق الطاقة:</strong> تقييمات الموقع، تحليل الظل، محاكاة الإنتاجية (PVSyst)، وتقارير السلامة الإنشائية.</li>
+                    <li><strong>تصميم وهندسة الأنظمة:</strong> تصميم كهربائي ومدني وميكانيكي مخصص لمحطات الطاقة الكهروضوئية.</li>
+                    <li><strong>التوريد:</strong> توفير ألواح شمسية من الفئة الأولى، ومحولات، وهياكل تثبيت، ومكونات النظام المتوازن.</li>
+                    <li><strong>الإنشاء والتركيب:</strong> إدارة الإنشاء في الموقع، والتركيب، والتشغيل.</li>
+                    <li><strong>التشغيل والصيانة (O&M):</strong> التنظيف المجدول، والمراقبة عن بُعد، والصيانة الوقائية.</li>
+                    <li><strong>الامتثال التنظيمي:</strong> إدارة طلبات صافي القياس، والربط البيني للشبكة، وموافقات هيئة الطاقة الجديدة والمتجددة (NREA) داخل جمهورية مصر العربية.</li>
+                </ul>
+                <p>
+                    تستند جميع التصاميم والتوصيات الهندسية إلى البيانات المقدمة من العميل، وقواعد بيانات الإشعاع الشمسي المتاحة للعموم، والظروف الخاصة بالموقع وقت إجراء المسح. قد يختلف توليد الطاقة الفعلي بناءً على العوامل البيئية، وصيانة النظام، وظروف الشبكة.
+                </p>
+
+                <h2>3. حقوق الملكية الفكرية</h2>
+                <p>
+                    يظل كل المحتوى والتصميم والرسومات الهندسية والمحاكاة والعروض والتقارير والشعارات والرسومات والبرامج التي تنتجها فيرتسولار ("الملكية الفكرية") ملكية خاصة وحصرية لشركة فيرتسولار، ما لم يُنص صراحةً على خلاف ذلك في اتفاقية خدمات رئيسية (MSA) موقعة أو عقد مشروع.
+                </p>
+                <p>
+                    يُحظر تمامًا إعادة إنتاج أو توزيع أو استخدام تصاميمنا الهندسية الخاصة أو محتوى موقعنا الإلكتروني أو علامتنا التجارية بدون إذن، وقد يؤدي ذلك إلى إجراءات قانونية. يحصل العملاء على ترخيص غير حصري وغير قابل للتحويل لاستخدام المخرجات فقط لغرض تشغيل وصيانة المشروع المحدد الذي أُنشئت من أجله.
+                </p>
+
+                <h2>4. السرية</h2>
+                <p>
+                    يوافق الطرفان على الحفاظ على سرية تامة فيما يتعلق بجميع المعلومات غير العامة المتبادلة خلال فترة أي تعاقد. يشمل ذلك، على سبيل المثال لا الحصر، بيانات استهلاك الكهرباء، والنماذج المالية، ومنهجيات الهندسة الخاصة، وأسعار المشاريع المحددة. تظل التزامات السرية سارية بعد إنهاء أي اتفاق بين الطرفين لمدة ثلاث (3) سنوات.
+                </p>
+
+                <h2>5. تحديد المسؤولية</h2>
+                <p>
+                    إلى أقصى حد يسمح به القانون المعمول به، لن تكون شركة فيرتسولار مسؤولة عن أي أضرار غير مباشرة أو عرضية أو خاصة أو تبعية أو تأديبية، بما في ذلك على سبيل المثال لا الحصر فقدان الأرباح، أو فقدان إنتاج الطاقة، أو انقطاع الأعمال، أو فقدان البيانات، الناشئة عن أو المتعلقة باستخدام موقعنا الإلكتروني أو خدماتنا.
+                </p>
+                <p>
+                    لن يتجاوز إجمالي مسؤوليتنا الكلية عن أي مطالبة تنشأ عن مشروع معين إجمالي الرسوم التي دفعها العميل إلى فيرتسولار بموجب بيان العمل (SOW) المحدد أو العقد الخاص بهذا المشروع خلال الاثني عشر (12) شهرًا التي تسبق مباشرة الحدث الذي أدى إلى المطالبة. ينطبق هذا التحديد على جميع أسباب الدعاوى، بما في ذلك الإخلال بالعقد، والإخلال بالضمان، والإهمال، والمسؤولية الصارمة، والأضرار الأخرى.
+                </p>
+                <p>
+                    <strong>القوة القاهرة:</strong> لن تكون فيرتسولار مسؤولة عن أي تأخير أو فشل في الأداء ناتج عن أسباب خارجة عن إرادتنا المعقولة، بما في ذلك على سبيل المثال لا الحصر الأفعال الإلهية، والحرب، والإرهاب، واللوائح الحكومية (بما في ذلك التغييرات في تعريفات التغذية أو سياسات صافي القياس)، وتأخيرات مشغل الشبكة، واضطرابات سلسلة التوريد، أو الظواهر الجوية القاسية.
+                </p>
+
+                <h2>6. شروط المشروع المحددة والضمانات</h2>
+                <p>
+                    تخضع تفاصيل أي تركيب للطاقة الشمسية، بما في ذلك المواصفات الفنية وضمانات الأداء وجداول الدفع، لعقد مشروع منفصل وموقع. في حالة وجود تعارض بين هذه الشروط العامة وعقد المشروع الموقع، تسود بنود عقد المشروع.
+                </p>
+                <ul>
+                    <li><strong>ضمانات الأداء:</strong> تحمل الألواح الشمسية ضمانات الشركة المصنعة (عادةً 12-15 سنة للمنتج، 25-30 سنة أداء خطي). تحمل المحولات ضمانات الشركة المصنعة (5-10 سنوات قياسي، قابلة للتمديد). تقدم فيرتسولار <strong>ضمان جودة التركيب</strong> منفصل (عادةً 5-10 سنوات) على التركيب.</li>
+                    <li><strong>موافقة صافي القياس:</strong> بينما تسهل فيرتسولار عملية التقديم، فإن الموافقة النهائية والجدول الزمني للربط البيني يخضعان لشركة توزيع الكهرباء المحلية وهيئة الطاقة الجديدة والمتجددة (NREA). نحن لا نضمن تاريخ موافقة محدد.</li>
+                    <li><strong>ظروف الموقع:</strong> العميل مسؤول عن توفير وصول آمن وغير معاق إلى الموقع وضمان السلامة الإنشائية للسقف أو الأرض. أي ظروف كامنة غير متوقعة (مثل أسقف الأسبستوس المخفية، أو العوائق تحت الأرض) قد تؤدي إلى أوامر تغيير وتكاليف إضافية.</li>
+                </ul>
+
+                <h2>7. شروط الدفع والضرائب</h2>
+                <p>
+                    ما لم يُنص على خلاف ذلك في عقد المشروع، فإن شروط الدفع القياسية لمشاريع الهندسة والتوريد والإنشاء (EPC) تستند إلى مراحل الإنجاز، وعادةً ما تتماشى مع توقيع العقد، وتسليم المواد إلى الموقع، وإكمال التركيب، والربط البيني للشبكة / التشغيل.
+                </p>
+                <p>
+                    جميع الأسعار والرسوم مقومة بالدولار الأمريكي (USD) أو الجنيه المصري (EGP) كما هو محدد. العميل مسؤول عن جميع الضرائب والرسوم والجبايات المطبقة، بما في ذلك ضريبة القيمة المضافة (VAT)، وفقًا لقوانين جمهورية مصر العربية. قد تؤدي الدفعات المتأخرة إلى فرض رسوم خدمة بنسبة 1.5٪ شهريًا على الرصيد المستحق.
+                </p>
+
+                <h2>8. استخدام الموقع الإلكتروني وإخلاء المسؤولية</h2>
+                <p>
+                    المعلومات المقدمة على موقعنا الإلكتروني، بما في ذلك <strong>حاسبة المساحة الشمسية</strong> ومنشورات المدونة، هي لأغراض إعلامية عامة وتقديرية أولية فقط. وهي لا تشكل نصيحة هندسية مهنية.
+                </p>
+                <p>
+                    بينما نسعى جاهدين لتحقيق الدقة، فإننا لا نضمن خلو الموقع الإلكتروني من الأخطاء أو عدم انقطاعه. نحتفظ بالحق في تعديل أو إيقاف أي ميزة أو محتوى في أي وقت دون إشعار مسبق. لا يجوز لك استخدام موقعنا الإلكتروني لأي غرض غير قانوني أو غير مصرح به، بما في ذلك استخراج البيانات، أو التنقيب عنها، أو إرسال رسائل غير مرغوب فيها.
+                </p>
+                <p>
+                    قد يحتوي موقعنا الإلكتروني على روابط لمواقع خارجية (مثل بوابات الشركات المصنعة والهيئات التنظيمية). نحن لا نؤيد ولا نتحمل مسؤولية محتوى أو دقة أي مواقع خارجية.
+                </p>
+
+                <h2>9. خصوصية البيانات</h2>
+                <p>
+                    خصوصيتك تهمنا. تتم إدارة المعلومات التي يتم جمعها من خلال نماذج الاتصال وطلبات العروض والاشتراكات في النشرة البريدية وفقًا <a href="privacy.html">لسياسة الخصوصية</a> الخاصة بنا. باستخدامك لموقعنا الإلكتروني وتقديم معلومات الاتصال الخاصة بك، فإنك توافق على جمع واستخدام بياناتك كما هو موضح في سياسة الخصوصية، والتي تم دمجها في هذه الشروط بالإشارة.
+                </p>
+
+                <h2>10. التعويض</h2>
+                <p>
+                    أنت توافق على تعويض ودرء وحماية فيرتسولار ومديريها وموظفيها والشركات التابعة لها من أي مطالبات أو أضرار أو التزامات أو نفقات (بما في ذلك الرسوم القانونية) الناشئة عن: (أ) انتهاكك لهذه الشروط؛ (ب) إساءة استخدامك للموقع الإلكتروني أو الخدمات؛ (ج) انتهاكك لأي حقوق خاصة بطرف ثالث؛ أو (د) أي إهمال أو سوء سلوك متعمد من جانبك.
+                </p>
+
+                <h2>11. الإنهاء</h2>
+                <p>
+                    نحتفظ بالحق في إنهاء أو تعليق وصولك إلى موقعنا الإلكتروني، أو في حالة الخدمات، إنهاء عقد مشروع محدد وفقًا لبنود الإنهاء المنصوص عليها فيه. عند الإنهاء، تظل جميع أحكام هذه الشروط التي من المفترض بطبيعتها أن تبقى بعد الإنهاء سارية، بما في ذلك أحكام الملكية، وإخلاء المسؤولية عن الضمان، والتعويض، وتحديد المسؤولية.
+                </p>
+
+                <h2>12. حل النزاعات والقانون الحاكم</h2>
+                <p>
+                    تخضع هذه الشروط وأي اتفاقيات منفصلة نقدم لك بموجبها الخدمات وتُفسر وفقًا لقوانين <strong>جمهورية مصر العربية</strong>.
+                </p>
+                <p>
+                    في حالة وجود نزاع، يوافق الطرفان أولاً على محاولة حل النزاع بشكل غير رسمي عن طريق الاتصال بالطرف الآخر والبحث عن حل بالتفاوض. إذا لم يتم حل النزاع من خلال مفاوضات بحسن نية في غضون ثلاثين (30) يومًا، يجوز لأي من الطرفين إحالة النزاع إلى المحاكم المختصة في الجيزة، مصر، أو إلى التحكيم الملزم وفقًا لقواعد مركز القاهرة الإقليمي للتحكيم التجاري الدولي (CRCICA)، حسبما يتم الاتفاق عليه بشكل متبادل.
+                </p>
+
+                <h2>13. التغييرات على هذه الشروط</h2>
+                <p>
+                    نحتفظ بالحق في تحديث أو تعديل هذه الشروط في أي وقت وفقًا لتقديرنا الخاص. إذا أجرينا تغييرات جوهرية، سنخطرك عن طريق مراجعة التاريخ أعلى هذه الصفحة، وفي بعض الحالات، قد نقدم إشعارًا إضافيًا (مثل إضافة بيان إلى صفحتنا الرئيسية أو إرسال إشعار عبر البريد الإلكتروني). استمرارك في استخدام الموقع الإلكتروني أو التعاقد على خدماتنا بعد أي تغييرات يشكل موافقتك على الشروط المعدلة.
+                </p>
+
+                <h2>14. معلومات الاتصال</h2>
+                <p>
+                    إذا كانت لديك أي أسئلة أو تعليقات أو استفسارات بخصوص شروط الخدمة هذه، فيرجى الاتصال بفريق الشؤون القانونية والامتثال لدينا:
+                </p>
+                <ul>
+                    <li><strong>البريد الإلكتروني:</strong> <a href="mailto:info@vertsolarco.com">info@vertsolarco.com</a></li>
+                    <li><strong>العنوان:</strong> شركة فيرتسولار لحلول الطاقة الشمسية، مدينة الشيخ زايد، الجيزة، جمهورية مصر العربية</li>
+                    <li><strong>الهاتف:</strong> +20 100 234 5678</li>
+                </ul>
+                <p class="mt-8 text-sm text-gray-400 italic">
+                    باستخدامك لموقعنا الإلكتروني أو خدماتنا، فإنك تقر بأنك قد قرأت وفهمت وتوافق على الالتزام بشروط الخدمة هذه. إننا نتطلع إلى العمل معًا من أجل مستقبل مستدام.
+                </p>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- تذييل الصفحة -->
+    <footer class="bg-[#001226] pt-16 pb-8 border-t-4 border-vertsolar-green text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <a href="index.html" class="flex items-center gap-3 mb-6 md:mb-0">
+                    <div class="w-10 h-10 bg-vertsolar-green rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+                    </div>
+                    <span class="text-3xl font-black text-white tracking-tighter font-heading">Vert<span class="text-vertsolar-green">solar</span></span>
+                </a>
+                <div class="flex gap-8 text-sm">
+                    <a href="index.html#about" class="text-gray-400 hover:text-white transition">من نحن</a>
+                    <a href="index.html#services" class="text-gray-400 hover:text-white transition">الحلول</a>
+                    <a href="index.html#contact" class="text-gray-400 hover:text-white transition">اتصل بنا</a>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">© 2026 شركة فيرتسولار لحلول وهندسة الطاقة الشمسية. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-6 text-sm">
+                    <a href="terms(ar).html" class="text-vertsolar-green font-semibold">شروط الخدمة</a>
+                    <a href="index.html#faq" class="text-gray-500 hover:text-white transition">الأسئلة الشائعة</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

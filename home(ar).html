@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فيرتسولار | حلول الطاقة الشمسية والهندسية الشاملة - مصر والشرق الأوسط</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=El+Messiri:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="static/logos/logo.jpg.jpeg">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vertsolar: {
+                            green: '#39A935',
+                            greenHover: '#2d872a',
+                            blue: '#00244B',
+                            blueHover: '#001a36',
+                            yellow: '#F9A825',
+                            lightGreen: '#E8F5E9',
+                            darkBlue: '#001A35',
+                            grayBg: '#F8FAFC'
+                        },
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        },
+                        dark: '#0f0f0f',
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                        heading: ['El Messiri', 'sans-serif'],
+                    },
+                    animation: {
+                        'sun-rotate': 'sun-rotate 30s linear infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        'sun-rotate': {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        'marquee': {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 36, 75, 0.1);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #00244B 0%, #001226 100%);
+        }
+        .solar-grid-pattern {
+            background-image: linear-gradient(rgba(57, 169, 53, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(57, 169, 53, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #00244B; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #39A935; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-white selection:bg-vertsolar-green selection:text-white">
+
+    <!-- TOP BAR -->
+    <aside class="bg-vertsolar-darkBlue text-gray-200 text-xs py-2 hidden lg:block z-50 relative border-b border-white/10" aria-label="شريط الاتصال">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <address class="flex items-center space-x-6 space-x-reverse not-italic">
+                <a href="tel:+201002345678" class="flex items-center hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-vertsolar-green rounded">
+                    <svg class="w-4 h-4 ml-2 text-vertsolar-green" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    <span>الخط الساخن: +20 100 234 5678</span>
+                </a>
+                <a href="mailto:info@vertsolar.com.eg" class="flex items-center hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-vertsolar-green rounded">
+                    <svg class="w-4 h-4 ml-2 text-vertsolar-green" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    <span>info@vertsolar.com.eg</span>
+                </a>
+            </address>
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <span class="flex items-center">
+                    <svg class="w-4 h-4 ml-2 text-vertsolar-yellow" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>الأحد - الخميس: 9:00 ص - 5:00 م (توقيت القاهرة)</span>
+                </a>
+                <a href="home(en).html" lang="en" class="hover:text-white transition font-bold border-r border-gray-600 pr-4 focus:outline-none focus:ring-2 focus:ring-vertsolar-green rounded">English</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN NAVIGATION -->
+    <header class="sticky top-0 w-full z-50 glass-morphism transition-all duration-300 shadow-sm" id="navbar" role="banner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="#home" class="flex-shrink-0 flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-vertsolar-green rounded-lg">
+                    <div class="w-12 h-12 bg-vertsolar-green rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition shadow-lg shadow-vertsolar-green/30" aria-hidden="true">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M5 21v-4a2 2 0 012-2h10a2 2 0 012 2v4" />
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-extrabold text-vertsolar-blue tracking-tight leading-none font-heading">Vert<span class="text-vertsolar-green">solar</span></span>
+                        <span class="text-[9px] uppercase tracking-[0.25em] text-vertsolar-blue/70 font-bold mt-1">شركة هندسية</span>
+                    </div>
+                </a>
+
+                <nav class="hidden lg:flex space-x-1 space-x-reverse items-center" aria-label="القائمة الرئيسية">
+                    <a href="#about" class="px-4 py-2 text-vertsolar-blue hover:text-vertsolar-green font-semibold rounded-lg hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-vertsolar-green">من نحن</a>
+                    <a href="#services" class="px-4 py-2 text-vertsolar-blue hover:text-vertsolar-green font-semibold rounded-lg hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-vertsolar-green">الحلول</a>
+                    <a href="#process" class="px-4 py-2 text-vertsolar-blue hover:text-vertsolar-green font-semibold rounded-lg hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-vertsolar-green">منهجيتنا</a>
+                    <a href="#engineering" class="px-4 py-2 text-vertsolar-blue hover:text-vertsolar-green font-semibold rounded-lg hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-vertsolar-green">التقنية</a>
+                    <a href="#solutions" class="px-4 py-2 text-vertsolar-blue hover:text-vertsolar-green font-semibold rounded-lg hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-vertsolar-green">أعمالنا</a>
+                    <div class="mr-4 pr-4 border-r border-gray-200">
+                        <a href="#contact" class="bg-vertsolar-green text-white px-6 py-3 rounded-xl font-bold hover:bg-vertsolar-blueHover transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-vertsolar-green">
+                            اطلب عرضًا
+                            <svg class="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5l-7 7m0 0l7 7m-7-7h18"/></svg>
+                        </a>
+                    </div>
+                </nav>
+
+                <button
+                    class="lg:hidden text-vertsolar-blue p-2 bg-gray-50 rounded-lg border border-gray-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-vertsolar-green transition"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                    aria-label="فتح القائمة الرئيسية"
+                >
+                    <svg class="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-lg" role="navigation" aria-label="القائمة الجوالة">
+            </div>
+    </header>
+
+    <section id="home" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-emerald-100/80 font-sans" aria-labelledby="hero-heading">
+        <div class="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-emerald-200 via-transparent to-transparent" aria-hidden="true"></div>
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 via-amber-400 to-emerald-400 opacity-70" aria-hidden="true"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+                <div class="lg:col-span-7 order-2 lg:order-1 text-center lg:text-right mt-10 lg:mt-0">
+                    <div class="inline-flex items-center space-x-3 space-x-reverse bg-white/70 border border-emerald-200 rounded-full px-5 py-2 mb-8 backdrop-blur-sm shadow-sm">
+                        <span class="relative flex h-3 w-3" aria-hidden="true">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                        </span>
+                        <span class="text-emerald-700 text-xs sm:text-sm font-bold tracking-widest uppercase">المقاول الأول للطاقة الشمسية في مصر</span>
+                    </div>
+
+                    <h1 id="hero-heading" class="text-5xl sm:text-6xl lg:text-7xl font-black text-slate-800 leading-[1.1] mb-6 tracking-tight">
+                        تزويد <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-amber-500">الشرق الأوسط</span><br class="hidden lg:block"> بالطاقة الذكية النقية.
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
+                        هندسة عالية الأداء مصممة للبيئات الصحراوية القاسية. نبني محطات طاقة شمسية على نطاق المرافق العامة والتجارية والسكنية مصممة لتحمل العوامل الجوية.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-16 justify-center lg:justify-start">
+                        <a href="#contact" class="px-8 py-4 bg-emerald-500 text-white rounded-xl font-bold text-lg hover:bg-emerald-400 transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-xl hover:shadow-emerald-500/30 flex items-center justify-center gap-3 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-emerald-400">
+                            ابدأ مشروعك
+                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </a>
+                        <a href="#projects" class="px-8 py-4 bg-white border border-emerald-200 text-emerald-700 rounded-xl font-bold text-lg hover:bg-emerald-50 transition-all duration-300 flex items-center justify-center gap-3 shadow-sm hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-emerald-400">
+                            استعرض أعمالنا
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 sm:gap-6 border-t border-emerald-200 pt-8 max-w-2xl mx-auto lg:mx-0" aria-label="إحصائيات رئيسية">
+                        <div>
+                            <p class="text-3xl sm:text-4xl font-black text-slate-800 mb-1">50<span class="text-emerald-500">+</span></p>
+                            <p class="text-amber-600 text-xs sm:text-sm font-bold uppercase tracking-wider">ميجاوات مركبة</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl sm:text-4xl font-black text-slate-800 mb-1">300<span class="text-emerald-500">+</span></p>
+                            <p class="text-emerald-600 text-xs sm:text-sm font-bold uppercase tracking-wider">مشروع</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl sm:text-4xl font-black text-slate-800 mb-1">10<span class="text-xl text-slate-400 mr-1">سنوات</span></p>
+                            <p class="text-slate-500 text-xs sm:text-sm font-bold uppercase tracking-wider">خبرة</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative order-1 lg:order-2 w-full max-w-md mx-auto lg:max-w-none pt-10 lg:pt-0">
+                    <div class="relative z-10 transition-transform duration-500 ease-out hover:scale-105">
+                        <div class="rounded-[2rem] overflow-hidden shadow-2xl shadow-emerald-500/10 border border-emerald-100 bg-white p-8 sm:p-12">
+                            <img src="static/logos/logo.jpg.jpeg"
+                                 alt="شعار فيرتسولار الرسمي"
+                                 class="w-full h-auto max-h-[320px] object-contain mx-auto"
+                                 style="filter: drop-shadow(0 4px 6px rgb(0 0 0 / 0.05));">
+                        </div>
+                    </div>
+
+                    <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-emerald-300 rounded-[3rem] -z-10 rotate-12 opacity-30 blur-2xl" aria-hidden="true"></div>
+                    <div class="absolute top-10 -left-8 w-32 h-32 border border-amber-300/60 rounded-full -z-10 opacity-70" aria-hidden="true"></div>
+
+                    <div class="absolute top-16 -right-6 sm:-right-12 bg-white/80 backdrop-blur-xl border border-emerald-200 rounded-2xl p-4 shadow-xl z-20 flex items-center gap-4 animate-bounce" style="animation-duration: 3s;" aria-label="شارة تصنيف المعدات من الفئة الأولى">
+                        <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center border border-emerald-200" aria-hidden="true">
+                            <svg class="w-6 h-6 text-amber-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-slate-800 font-black text-sm tracking-wide">الفئة الأولى</p>
+                            <p class="text-slate-500 text-xs font-medium">معدات فقط</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUSTED PARTNERS MARQUEE -->
+    <section class="py-8 bg-white border-b border-gray-100 overflow-hidden" aria-label="الشهادات والشركاء">
+        <div class="max-w-7xl mx-auto px-4 mb-4">
+            <h2 class="text-center text-gray-400 font-bold uppercase tracking-widest text-xs">التميز الهندسي المعتمد والشراكات</h2>
+        </div>
+        <ul class="sr-only">
+            <li>ISO 9001</li><li>ISO 14001</li><li>TÜV Rheinland</li><li>NREA Egypt</li><li>Jinko Solar</li><li>Huawei Inverters</li><li>SMA</li><li>Egyptian Electricity</li>
+        </ul>
+        <div class="relative max-w-[100vw] overflow-hidden group" aria-hidden="true">
+            <div class="flex whitespace-nowrap motion-safe:animate-marquee motion-reduce:animate-none will-change-transform group-hover:[animation-play-state:paused]"
+                 style="will-change: transform; direction: ltr;">
+                <div class="flex-shrink-0 flex items-center space-x-16 px-8">
+                    <span class="text-2xl font-black text-gray-300 uppercase">ISO-9001</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">ISO-14001</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">TÜV Rheinland</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">NREA Egypt</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">Jinko Solar</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">Huawei Inverters</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">SMA</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">Egyptian Electricity</span>
+                </div>
+                <div class="flex-shrink-0 flex items-center space-x-16 px-8">
+                    <span class="text-2xl font-black text-gray-300 uppercase">ISO-9001</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">ISO-14001</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">TÜV Rheinland</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">NREA Egypt</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">Jinko Solar</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">Huawei Inverters</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">SMA</span>
+                    <span class="text-2xl font-black text-gray-300 uppercase">Egyptian Electricity</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <img class="rounded-xl " src="static/assets/egypt-solar.png" alt="الطاقة الشمسية في مصر">
+                </div>
+                <div>
+                    <h2 class="text-vertsolar-green font-bold tracking-widest mb-3 uppercase text-sm">قصة فيرتسولار</h2>
+                    <h3 class="text-4xl lg:text-5xl font-black text-vertsolar-blue font-heading mb-6">جذورنا في مصر، <br>طاقتنا من الشمس.</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 text-lg">
+                        تأسست شركة فيرتسولار لحلول وهندسة الطاقة الشمسية برؤية واحدة: تسريع التحول إلى الطاقة المتجددة في جميع أنحاء مصر ومنطقة الشرق الأوسط وشمال إفريقيا.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        على عكس المثبتين التقليديين، نحن شركة <strong class="text-vertsolar-blue">هندسة ومشتريات وبناء (EPC)</strong> حقيقية. نحن نفهم التحديات الخاصة ببيئتنا المحلية - من درجات الحرارة المرتفعة في صعيد مصر إلى الغبار الكاشط في الصحاري الساحلية. كل نظام نصممه يتمتع بهندسة متينة لتحمل هذه الظروف، مما يضمن أقصى إنتاجية وطول العمر.
+                    </p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-vertsolar-lightGreen flex items-center justify-center mt-1 ml-4">
+                                <svg class="w-4 h-4 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            </div>
+                            <span class="text-gray-700 font-medium">مرخصة من هيئة الطاقة الجديدة والمتجددة (NREA).</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-vertsolar-lightGreen flex items-center justify-center mt-1 ml-4">
+                                <svg class="w-4 h-4 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            </div>
+                            <span class="text-gray-700 font-medium">خبرة في القياس الصافي وتكامل الشبكة الحكومية.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-vertsolar-lightGreen flex items-center justify-center mt-1 ml-4">
+                                <svg class="w-4 h-4 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            </div>
+                            <span class="text-gray-700 font-medium">فرق هندسة إنشائية وكهربائية ومدنية داخلية.</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-vertsolar-blue font-bold hover:text-vertsolar-green transition border-b-2 border-vertsolar-blue hover:border-vertsolar-green pb-1">
+                        تعرف على فريق القيادة <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8l-4 4m0 0l4 4m-4-4h18"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPANDED SERVICES SECTION -->
+    <section id="services" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 max-w-3xl mx-auto">
+                <h2 class="text-vertsolar-green font-bold tracking-widest mb-3 uppercase text-sm">حلول الهندسة والمشتريات والبناء</h2>
+                <h3 class="text-4xl lg:text-5xl font-black text-vertsolar-blue font-heading leading-tight">بنية تحتية شاملة للطاقة الشمسية</h3>
+                <p class="mt-6 text-gray-500 text-lg">نقدم حلولاً متكاملة مصممة خصيصاً لتلبية احتياجات الطاقة المتنوعة عبر القطاعات السكنية والتجارية والصناعية والزراعية.</p>
+                <div class="w-24 h-1.5 bg-vertsolar-yellow mx-auto mt-8 rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group p-10 rounded-[2rem] border border-gray-100 bg-white hover:bg-vertsolar-blue transition-all duration-500 hover:-translate-y-2 shadow-lg shadow-gray-200/50 hover:shadow-2xl hover:shadow-vertsolar-blue/30">
+                    <div class="w-16 h-16 bg-vertsolar-lightGreen rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white/10 transition-colors">
+                        <svg class="w-8 h-8 text-vertsolar-green group-hover:text-vertsolar-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-vertsolar-blue mb-4 group-hover:text-white">أسطح المنازل السكنية</h4>
+                    <p class="text-gray-600 group-hover:text-gray-300 leading-relaxed mb-6">حول سطح فيلتك إلى محطة طاقة. ندير عملية القياس الصافي بالكامل مع شركات التوزيع المحلية لإلغاء فواتير الكهرباء الخاصة بك.</p>
+                    <ul class="space-y-2 mb-8 border-t border-gray-100 group-hover:border-white/10 pt-6">
+                        <li class="flex items-center text-sm text-gray-500 group-hover:text-gray-400"><svg class="w-4 h-4 ml-2 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293l-9.414 9.414L3.293 10.707l1.414-1.414 4.707 4.707 8-8 1.414 1.414z"/></svg> تكامل معماري مخصص</li>
+                        <li class="flex items-center text-sm text-gray-500 group-hover:text-gray-400"><svg class="w-4 h-4 ml-2 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293l-9.414 9.414L3.293 10.707l1.414-1.414 4.707 4.707 8-8 1.414 1.414z"/></svg> ضمان أداء لمدة 25 عامًا</li>
+                    </ul>
+                </div>
+
+                <div class="group p-10 rounded-[2rem] border border-gray-100 bg-white hover:bg-vertsolar-blue transition-all duration-500 hover:-translate-y-2 shadow-lg shadow-gray-200/50 hover:shadow-2xl hover:shadow-vertsolar-blue/30">
+                    <div class="w-16 h-16 bg-vertsolar-lightGreen rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white/10 transition-colors">
+                        <svg class="w-8 h-8 text-vertsolar-green group-hover:text-vertsolar-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-vertsolar-blue mb-4 group-hover:text-white">تجاري وصناعي</h4>
+                    <p class="text-gray-600 group-hover:text-gray-300 leading-relaxed mb-6">محطات طاقة قابلة للتوسع للمصانع والمراكز التجارية والمستودعات. ثبت تكاليف الطاقة الخاصة بك واحمِ أرباحك من ارتفاع تعريفات المرافق.</p>
+                    <ul class="space-y-2 mb-8 border-t border-gray-100 group-hover:border-white/10 pt-6">
+                        <li class="flex items-center text-sm text-gray-500 group-hover:text-gray-400"><svg class="w-4 h-4 ml-2 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293l-9.414 9.414L3.293 10.707l1.414-1.414 4.707 4.707 8-8 1.414 1.414z"/></svg> نماذج تمويل رأسمالي واتفاقيات شراء الطاقة</li>
+                        <li class="flex items-center text-sm text-gray-500 group-hover:text-gray-400"><svg class="w-4 h-4 ml-2 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293l-9.414 9.414L3.293 10.707l1.414-1.414 4.707 4.707 8-8 1.414 1.414z"/></svg> طوبولوجيا شبكية وهجينة</li>
+                    </ul>
+                </div>
+
+                <div class="group p-10 rounded-[2rem] border border-gray-100 bg-white hover:bg-vertsolar-blue transition-all duration-500 hover:-translate-y-2 shadow-lg shadow-gray-200/50 hover:shadow-2xl hover:shadow-vertsolar-blue/30">
+                    <div class="w-16 h-16 bg-vertsolar-lightGreen rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white/10 transition-colors">
+                        <svg class="w-8 h-8 text-vertsolar-green group-hover:text-vertsolar-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-vertsolar-blue mb-4 group-hover:text-white">ضخ المياه بالطاقة الشمسية</h4>
+                    <p class="text-gray-600 group-hover:text-gray-300 leading-relaxed mb-6">أساسي لاستصلاح الصحراء. استبدل مولدات الديزل باهظة الثمن بمشغلات تردد متغير تعمل بالطاقة الشمسية لضخ المياه للري بشكل مستمر.</p>
+                    <ul class="space-y-2 mb-8 border-t border-gray-100 group-hover:border-white/10 pt-6">
+                        <li class="flex items-center text-sm text-gray-500 group-hover:text-gray-400"><svg class="w-4 h-4 ml-2 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293l-9.414 9.414L3.293 10.707l1.414-1.414 4.707 4.707 8-8 1.414 1.414z"/></svg> دعم الآبار العميقة الغاطسة</li>
+                        <li class="flex items-center text-sm text-gray-500 group-hover:text-gray-400"><svg class="w-4 h-4 ml-2 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293l-9.414 9.414L3.293 10.707l1.414-1.414 4.707 4.707 8-8 1.414 1.414z"/></svg> صفر لوجستيات وقود</li>
+                    </ul>
+                </div>
+
+                <div class="group p-10 rounded-[2rem] border border-gray-100 bg-white hover:bg-vertsolar-blue transition-all duration-500 hover:-translate-y-2 shadow-lg shadow-gray-200/50 hover:shadow-2xl hover:shadow-vertsolar-blue/30">
+                    <div class="w-16 h-16 bg-vertsolar-lightGreen rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white/10 transition-colors">
+                        <svg class="w-8 h-8 text-vertsolar-green group-hover:text-vertsolar-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-vertsolar-blue mb-4 group-hover:text-white">التشغيل والصيانة</h4>
+                    <p class="text-gray-600 group-hover:text-gray-300 leading-relaxed mb-6">احمِ استثمارك. نقدم عقود تشغيل وصيانة شاملة تشمل التنظيف الآلي والتصوير الحراري والفحوصات الكهربائية الوقائية.</p>
+                    <ul class="space-y-2 mb-8 border-t border-gray-100 group-hover:border-white/10 pt-6">
+                        <li class="flex items-center text-sm text-gray-500 group-hover:text-gray-400"><svg class="w-4 h-4 ml-2 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293l-9.414 9.414L3.293 10.707l1.414-1.414 4.707 4.707 8-8 1.414 1.414z"/></svg> تنظيف آلي للغبار</li>
+                        <li class="flex items-center text-sm text-gray-500 group-hover:text-gray-400"><svg class="w-4 h-4 ml-2 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293l-9.414 9.414L3.293 10.707l1.414-1.414 4.707 4.707 8-8 1.414 1.414z"/></svg> مراقبة المحطة عن بعد</li>
+                    </ul>
+                </div>
+
+                <div class="group p-10 rounded-[2rem] border border-gray-100 bg-white hover:bg-vertsolar-blue transition-all duration-500 hover:-translate-y-2 shadow-lg shadow-gray-200/50 hover:shadow-2xl hover:shadow-vertsolar-blue/30">
+                    <div class="w-16 h-16 bg-vertsolar-lightGreen rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white/10 transition-colors">
+                        <svg class="w-8 h-8 text-vertsolar-green group-hover:text-vertsolar-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-vertsolar-blue mb-4 group-hover:text-white">تخزين الطاقة (BESS)</h4>
+                    <p class="text-gray-600 group-hover:text-gray-300 leading-relaxed mb-6">حقق استقلالية حقيقية مع أنظمة بطاريات الليثيوم أيون. مثالية للنزل البيئية خارج الشبكة أو ضمان الطاقة غير المنقطعة للمرافق الحيوية.</p>
+                    <ul class="space-y-2 mb-8 border-t border-gray-100 group-hover:border-white/10 pt-6">
+                        <li class="flex items-center text-sm text-gray-500 group-hover:text-gray-400"><svg class="w-4 h-4 ml-2 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293l-9.414 9.414L3.293 10.707l1.414-1.414 4.707 4.707 8-8 1.414 1.414z"/></svg> قدرات حلاقة الذروة</li>
+                        <li class="flex items-center text-sm text-gray-500 group-hover:text-gray-400"><svg class="w-4 h-4 ml-2 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293l-9.414 9.414L3.293 10.707l1.414-1.414 4.707 4.707 8-8 1.414 1.414z"/></svg> طاقة احتياطية سلسة</li>
+                    </ul>
+                </div>
+
+                <div class="group p-10 rounded-[2rem] border border-gray-100 bg-white hover:bg-vertsolar-blue transition-all duration-500 hover:-translate-y-2 shadow-lg shadow-gray-200/50 hover:shadow-2xl hover:shadow-vertsolar-blue/30">
+                    <div class="w-16 h-16 bg-vertsolar-lightGreen rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white/10 transition-colors">
+                        <svg class="w-8 h-8 text-vertsolar-green group-hover:text-vertsolar-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-vertsolar-blue mb-4 group-hover:text-white">الاستشارات الهندسية</h4>
+                    <p class="text-gray-600 group-hover:text-gray-300 leading-relaxed mb-6">دراسات الجدوى المبدئية، تحليل الظل، حسابات الحمل الإنشائي، والحصول على التصاريح لمشاريع المرافق واسعة النطاق في جميع أنحاء الشرق الأوسط وشمال إفريقيا.</p>
+                    <ul class="space-y-2 mb-8 border-t border-gray-100 group-hover:border-white/10 pt-6">
+                        <li class="flex items-center text-sm text-gray-500 group-hover:text-gray-400"><svg class="w-4 h-4 ml-2 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293l-9.414 9.414L3.293 10.707l1.414-1.414 4.707 4.707 8-8 1.414 1.414z"/></svg> محاكاة الإنتاجية باستخدام PVSyst</li>
+                        <li class="flex items-center text-sm text-gray-500 group-hover:text-gray-400"><svg class="w-4 h-4 ml-2 text-vertsolar-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293l-9.414 9.414L3.293 10.707l1.414-1.414 4.707 4.707 8-8 1.414 1.414z"/></svg> تقارير السلامة الإنشائية</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENGINEERING PROCESS TIMELINE -->
+    <section id="process" class="py-24 bg-vertsolar-darkBlue text-white border-t border-white/10 relative overflow-hidden">
+        <div class="absolute left-0 top-1/4 w-96 h-96 bg-vertsolar-blue rounded-full blur-[100px] opacity-50"></div>
+        <div class="absolute right-0 bottom-0 w-[500px] h-[500px] bg-vertsolar-green rounded-full blur-[150px] opacity-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-vertsolar-yellow font-bold tracking-widest mb-3 uppercase text-sm">كيف نعمل</h2>
+                <h3 class="text-4xl lg:text-5xl font-black mb-6 font-heading">سير عمل الهندسة والمشتريات والبناء</h3>
+                <p class="text-gray-400 max-w-2xl mx-auto">من الاستشارة الأولية إلى تشغيل الطاقة، يضمن نهجنا المنظم تنفيذًا لا تشوبه شائبة دون تأخير.</p>
+            </div>
+
+            <div class="relative">
+                <div class="hidden md:block absolute right-1/2 transform translate-x-1/2 h-full w-1 bg-white/10"></div>
+
+                <div class="space-y-12">
+                    <div class="flex flex-col md:flex-row items-center justify-between w-full">
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:text-left md:pl-12">
+                            <h4 class="text-2xl font-bold text-vertsolar-green mb-2">1. مسح الموقع وتدقيق الطاقة</h4>
+                            <p class="text-gray-400">يزور مهندسونا الموقع لتحليل هيكل السقف والبنية التحتية الكهربائية وبيانات الاستهلاك التاريخية لتحديد حجم النظام بشكل مثالي.</p>
+                        </div>
+                        <div class="w-12 h-12 bg-vertsolar-blue border-4 border-vertsolar-green rounded-full flex items-center justify-center z-10 relative">
+                            <span class="font-bold">01</span>
+                        </div>
+                        <div class="w-full md:w-5/12 md:pr-12 hidden md:block"></div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center justify-between w-full">
+                        <div class="w-full md:w-5/12 md:pl-12 hidden md:block"></div>
+                        <div class="w-12 h-12 bg-vertsolar-blue border-4 border-vertsolar-yellow rounded-full flex items-center justify-center z-10 relative">
+                            <span class="font-bold">02</span>
+                        </div>
+                        <div class="w-full md:w-5/12 mt-6 md:mt-0 md:pr-12">
+                            <h4 class="text-2xl font-bold text-vertsolar-yellow mb-2">2. الهندسة والتصميم</h4>
+                            <p class="text-gray-400">باستخدام النمذجة ثلاثية الأبعاد المتقدمة وبرنامج PVSyst، ننشئ مخططًا مخصصًا يضمن أقصى إنتاجية للطاقة الشمسية وسلامة هيكلية.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center justify-between w-full">
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:text-left md:pl-12">
+                            <h4 class="text-2xl font-bold text-vertsolar-green mb-2">3. التراخيص والتصاريح</h4>
+                            <p class="text-gray-400">نتولى جميع الإجراءات البيروقراطية مع شركة التوزيع المحلية (مثل كهرباء جنوب القاهرة) وهيئة الطاقة الجديدة والمتجددة للموافقات على القياس الصافي.</p>
+                        </div>
+                        <div class="w-12 h-12 bg-vertsolar-blue border-4 border-vertsolar-green rounded-full flex items-center justify-center z-10 relative">
+                            <span class="font-bold">03</span>
+                        </div>
+                        <div class="w-full md:w-5/12 md:pr-12 hidden md:block"></div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center justify-between w-full">
+                        <div class="w-full md:w-5/12 md:pl-12 hidden md:block"></div>
+                        <div class="w-12 h-12 bg-vertsolar-blue border-4 border-vertsolar-yellow rounded-full flex items-center justify-center z-10 relative">
+                            <span class="font-bold">04</span>
+                        </div>
+                        <div class="w-full md:w-5/12 mt-6 md:mt-0 md:pr-12">
+                            <h4 class="text-2xl font-bold text-vertsolar-yellow mb-2">4. المشتريات والتركيب</h4>
+                            <p class="text-gray-400">نشر مكونات من الفئة الأولى. تقوم فرق التركيب المعتمدة لدينا ببناء المحطة وفقًا لأعلى معايير السلامة الدولية.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLAR SPACE CALCULATOR -->
+    <section id="calculator" class="bg-white py-20 lg:py-28">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <span class="text-brand-600 font-semibold text-xs tracking-[0.2em] uppercase">تقدير فوري</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-dark mt-3 mb-4">ما مقدار الطاقة الشمسية التي تناسب مساحتك؟</h2>
+                <p class="text-gray-500 text-lg max-w-2xl mx-auto">حرك المؤشر أو اكتب مساحتك - سنحسب نظامًا تقديريًا بناءً على بيانات الطاقة الشمسية المصرية (5.7 ساعة شمس/يوم).</p>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden">
+                <div class="grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-gray-100">
+                    <div class="p-8 lg:p-10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-sm font-semibold text-dark uppercase tracking-wide">مساحتك المتاحة</h3>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-4xl lg:text-5xl font-extrabold text-brand-600" id="areaDisplay">50</span>
+                                    <span class="text-lg font-medium text-gray-400">م²</span>
+                                </div>
+                            </div>
+                            <input type="range" id="areaSlider" min="10" max="500" value="50" step="1" class="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-brand-600 mb-2" oninput="updateCalculator()" />
+                            <div class="flex justify-between text-xs text-gray-400 mt-1 mb-8">
+                                <span>10 م²</span>
+                                <span>500 م²</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-10">
+                                <span class="text-sm text-gray-500">أو اكتب المساحة بالضبط</span>
+                                <input type="number" id="areaInput" value="50" min="10" max="500" class="w-24 px-3 py-2 border border-gray-200 rounded-xl text-sm font-semibold text-dark focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent" onchange="syncSliderFromInput()" />
+                                <span class="text-sm text-gray-500">م²</span>
+                            </div>
+                        </div>
+                        <div class="mt-auto pt-6 border-t border-gray-100">
+                            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">النظام المقدر</p>
+                            <div class="flex items-baseline gap-2 mb-2">
+                                <span class="text-4xl lg:text-5xl font-extrabold text-dark" id="heroSysSize">2.9</span>
+                                <span class="text-lg font-medium text-gray-400">كيلوواط ذروة</span>
+                            </div>
+                            <p class="text-sm text-gray-500">≈ <span id="heroPanelCount">7</span> لوح × 400 وات لكل لوح</p>
+                        </div>
+                    </div>
+
+                    <div class="p-8 lg:p-10 bg-gray-50">
+                        <h3 class="text-sm font-semibold text-dark uppercase tracking-wide mb-6">الأداء والتكلفة</h3>
+                        <div class="grid grid-cols-2 gap-4 sm:gap-5">
+                            <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-brand-200 transition-colors">
+                                <svg class="w-5 h-5 text-brand-600 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                <p class="text-2xl font-bold text-dark" id="dailyProd">12.7</p>
+                                <p class="text-xs text-gray-500 mt-1">كيلوواط ساعة / يوم</p>
+                            </div>
+                            <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-brand-200 transition-colors">
+                                <svg class="w-5 h-5 text-brand-600 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg>
+                                <p class="text-2xl font-bold text-dark" id="annualProd">4,620</p>
+                                <p class="text-xs text-gray-500 mt-1">كيلوواط ساعة / سنة</p>
+                            </div>
+                            <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-brand-200 transition-colors">
+                                <svg class="w-5 h-5 text-brand-600 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4 4 1 6-5-3-5 3 1-6-4-4 6-1z"/></svg>
+                                <p class="text-2xl font-bold text-dark" id="estCost">$2,280</p>
+                                <p class="text-xs text-gray-400 mt-1" id="estCostEGP">≈ 110,600 ج.م</p>
+                            </div>
+                            <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-brand-200 transition-colors">
+                                <svg class="w-5 h-5 text-brand-600 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+                                <p class="text-2xl font-bold text-dark" id="annualSavings">$190</p>
+                                <p class="text-xs text-gray-400 mt-1" id="annualSavingsEGP">≈ 9,200 ج.م</p>
+                            </div>
+                            <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-brand-200 transition-colors">
+                                <svg class="w-5 h-5 text-brand-600 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <p class="text-2xl font-bold text-dark" id="payback">6.0</p>
+                                <p class="text-xs text-gray-500 mt-1">سنوات</p>
+                            </div>
+                            <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-brand-200 transition-colors">
+                                <svg class="w-5 h-5 text-brand-600 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                                <p class="text-2xl font-bold text-dark" id="co2Offset">2.3</p>
+                                <p class="text-xs text-gray-500 mt-1">طن / سنة</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-6">⚠️ بناءً على 5.7 ساعة ذروة شمسية، ألواح 400 وات، كفاءة 77٪، 0.80 دولار/وات، 2.0 ج.م/ك.و.س. النتائج الفعلية تختلف.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const PEAK_SUN_HOURS = 5.7;
+        const PANEL_WATTAGE_KW = 0.4;
+        const M2_PER_KW = 7.0;
+        const DERATING = 0.77;
+        const COST_PER_WATT_USD = 0.80;
+        const TARIFF_USD_PER_KWH = 0.041;
+        const EGP_RATE = 48.5;
+        const CO2_KG_PER_KWH = 0.50;
+
+        function updateCalculator() {
+            const slider = document.getElementById('areaSlider');
+            const input = document.getElementById('areaInput');
+            const area = parseFloat(slider.value);
+            input.value = area;
+            document.getElementById('areaDisplay').textContent = area;
+            const usableArea = area * 0.80;
+            const systemSizeKW = usableArea / M2_PER_KW;
+            const panelCount = Math.round(systemSizeKW / PANEL_WATTAGE_KW);
+            const dailyKWh = systemSizeKW * PEAK_SUN_HOURS * DERATING;
+            const annualKWh = dailyKWh * 365;
+            const costUSD = systemSizeKW * 1000 * COST_PER_WATT_USD;
+            const costEGP = costUSD * EGP_RATE;
+            const savingsUSD = annualKWh * TARIFF_USD_PER_KWH;
+            const savingsEGP = savingsUSD * EGP_RATE;
+            const payback = savingsUSD > 0 ? costUSD / savingsUSD : 0;
+            const co2Tons = annualKWh * CO2_KG_PER_KWH / 1000;
+            document.getElementById('heroSysSize').textContent = systemSizeKW.toFixed(1);
+            document.getElementById('heroPanelCount').textContent = panelCount;
+            document.getElementById('dailyProd').textContent = dailyKWh.toFixed(1);
+            document.getElementById('annualProd').textContent = Math.round(annualKWh).toLocaleString();
+            document.getElementById('estCost').textContent = '$' + Math.round(costUSD).toLocaleString();
+            document.getElementById('estCostEGP').textContent = '≈ ' + Math.round(costEGP).toLocaleString() + ' ج.م';
+            document.getElementById('annualSavings').textContent = '$' + Math.round(savingsUSD).toLocaleString();
+            document.getElementById('annualSavingsEGP').textContent = '≈ ' + Math.round(savingsEGP).toLocaleString() + ' ج.م';
+            document.getElementById('payback').textContent = payback.toFixed(1);
+            document.getElementById('co2Offset').textContent = co2Tons.toFixed(1);
+        }
+
+        function syncSliderFromInput() {
+            const input = document.getElementById('areaInput');
+            const slider = document.getElementById('areaSlider');
+            let val = parseInt(input.value, 10);
+            if (isNaN(val)) val = 10;
+            if (val < 10) val = 10;
+            if (val > 500) val = 500;
+            slider.value = val;
+            input.value = val;
+            updateCalculator();
+        }
+        document.addEventListener('DOMContentLoaded', updateCalculator);
+    </script>
+
+    <!-- SOLUTIONS -->
+    <section id="solutions" class="bg-white py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 lg:mb-18">
+                <span class="text-brand-600 font-semibold text-xs tracking-[0.2em] uppercase">ما نبنيه</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-dark mt-3 mb-4">حلول الطاقة الشمسية</h2>
+                <p class="text-gray-500 text-lg max-w-2xl mx-auto">أنظمة طاقة شمسية متكاملة مصممة للأداء والموثوقية والعوائد المالية الحقيقية.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-shadow p-6 flex flex-col group">
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-dark mb-3">زراعي</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">مضخات مياه شمسية، أنظمة زراعية فولتية، وطاقة خارج الشبكة للمزارع - قلل الاعتماد على الديزل بنسبة تصل إلى 80٪.</p>
+                    <ul class="text-sm text-gray-600 space-y-2 mb-5">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> قدرة مضخة 1 - 50 حصان</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> استرداد التكلفة في 2 - 4 سنوات</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> خيارات خارج الشبكة وهجينة</li>
+                    </ul>
+                    <a href="#contact" class="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors">اعرف المزيد <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-shadow p-6 flex flex-col group">
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-dark mb-3">سكني</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">أنظمة أسطح مصممة حسب احتياجاتك من الطاقة - من الأنظمة الأساسية المرتبطة بالشبكة إلى الإعدادات المتميزة الجاهزة للبطارية.</p>
+                    <div class="space-y-2 mb-4">
+                        <button onclick="togglePackage('basic')" class="w-full flex items-center justify-between px-4 py-3 rounded-lg border border-gray-200 hover:border-brand-200 hover:bg-brand-50/30 transition-colors group/btn"><div class="text-right"><span class="font-semibold text-dark text-sm">أساسي</span><span class="text-xs text-gray-400 mr-2">3 - 5 ك.و</span></div><svg class="w-4 h-4 text-gray-400 group-hover/btn:text-brand-600 transition-transform duration-200" id="icon-basic" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                        <div id="pkg-basic" class="hidden border border-brand-100 bg-brand-50/40 rounded-lg px-4 py-3 text-sm text-gray-700 space-y-1"><p>✓ ألواح متعددة البلورات من الفئة الأولى</p><p>✓ محول سلسلة</p><p>✓ ضمان صنعة 5 سنوات</p><p class="text-xs text-gray-400 mt-1">مثالي للمنازل الصغيرة والشقق</p></div>
+                        <button onclick="togglePackage('standard')" class="w-full flex items-center justify-between px-4 py-3 rounded-lg border border-gray-200 hover:border-brand-200 hover:bg-brand-50/30 transition-colors group/btn"><div class="text-right"><span class="font-semibold text-dark text-sm">قياسي</span><span class="text-xs text-gray-400 mr-2">5 - 8 ك.و</span></div><svg class="w-4 h-4 text-gray-400 group-hover/btn:text-brand-600 transition-transform duration-200" id="icon-standard" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                        <div id="pkg-standard" class="hidden border border-brand-100 bg-brand-50/40 rounded-lg px-4 py-3 text-sm text-gray-700 space-y-1"><p>✓ ألواح أحادية البلورة من الفئة الأولى</p><p>✓ محول جاهز للهجين</p><p>✓ مراقبة عن بعد شاملة</p><p>✓ ضمان صنعة 10 سنوات</p><p class="text-xs text-gray-400 mt-1">أفضل قيمة للأسر متوسطة الحجم</p></div>
+                        <button onclick="togglePackage('premium')" class="w-full flex items-center justify-between px-4 py-3 rounded-lg border border-gray-200 hover:border-brand-200 hover:bg-brand-50/30 transition-colors group/btn"><div class="text-right"><span class="font-semibold text-dark text-sm">متميز</span><span class="text-xs text-gray-400 mr-2">8 - 15 ك.و</span></div><svg class="w-4 h-4 text-gray-400 group-hover/btn:text-brand-600 transition-transform duration-200" id="icon-premium" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                        <div id="pkg-premium" class="hidden border border-brand-100 bg-brand-50/40 rounded-lg px-4 py-3 text-sm text-gray-700 space-y-1"><p>✓ ألواح عالية الكفاءة من النوع N (≥ 22٪)</p><p>✓ محولات دقيقة أو محسنات تيار مستمر</p><p>✓ جاهز للبطارية + تجهيز شاحن سيارة كهربائية</p><p>✓ ضمان أداء 25 سنة</p><p class="text-xs text-gray-400 mt-1">أقصى توفير واستقلالية في الطاقة</p></div>
+                    </div>
+                    <a href="#contact" class="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors">قارن الباقات <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-shadow p-6 flex flex-col group">
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-dark mb-3">تجاري وصناعي</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">أنظمة قابلة للتوسع للمكاتب والمصانع ومراكز الخدمات اللوجستية - من 30 كيلوواط حتى 5 ميجاوات.</p>
+                    <ul class="text-sm text-gray-600 space-y-2 mb-5">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> خيارات محولات سلسلة / مركزية</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> استرداد التكلفة في 3 - 6 سنوات</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> تكوينات مرتبطة بالشبكة وهجينة</li>
+                    </ul>
+                    <a href="#contact" class="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors">احصل على عرض سعر <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-shadow p-6 flex flex-col group">
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="10" x2="6" y2="14"/><line x1="10" y1="10" x2="10" y2="14"/><rect x="14" y="8" width="6" height="8" rx="1"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-dark mb-3">البطاريات وتخزين الطاقة <span class="text-xs font-normal text-gray-400">(BESS)</span></h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">تخزين ليثيوم أيون لمرونة على مدار الساعة - من وحدات منزلية 20 ك.و.س إلى بنوك تجارية متعددة الميجاوات/ساعة.</p>
+                    <ul class="text-sm text-gray-600 space-y-2 mb-5">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> نسخ احتياطي: 6 - 48 ساعة</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> حلاقة الذروة وتحويل الأحمال</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> متوافق مع جميع أنظمة الطاقة الشمسية</li>
+                    </ul>
+                    <a href="#contact" class="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors">استكشف التخزين <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-shadow p-6 flex flex-col group">
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/><path d="M8.5 8.5l3 3M15.5 15.5l-3-3" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-dark mb-3">سخان مياه شمسي</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">مجمعات أنابيب مفرغة ومسطحة لمياه ساخنة موثوقة - للمنازل والفنادق والمطابخ التجارية.</p>
+                    <ul class="text-sm text-gray-600 space-y-2 mb-5">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> خيارات خزان 150 - 500 لتر</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> تخفيض يزيد عن 70٪ في فواتير تسخين المياه</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> أنظمة ثيرموسيفون ومضخة</li>
+                    </ul>
+                    <a href="#contact" class="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors">عرض السخانات <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="engineering" class="bg-gray-50 py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 lg:mb-18">
+                <span class="text-brand-600 font-semibold text-xs tracking-[0.2em] uppercase">كيف نساعد</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-dark mt-3 mb-4">خدمات الهندسة والدعم</h2>
+                <p class="text-gray-500 text-lg max-w-2xl mx-auto">من دراسات الجدوى إلى الصيانة المستمرة - نضمن أداء نظامك بأفضل صورة، سنة بعد سنة.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6 lg:gap-8">
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow p-6 sm:p-8 flex flex-col group">
+                    <div class="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center mb-5"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 17H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-4"/><polygon points="12,15 17,21 7,21"/></svg></div>
+                    <h3 class="text-lg font-bold text-dark mb-4">الاستشارات الهندسية</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">حدد حجم استثمارك بشكل صحيح من خلال دراسات جدوى مفصلة، وتدقيق الطاقة (المستوى 1-3)، وخرائط طريق شاملة لعائد الاستثمار. نقدم توصيات قائمة على البيانات قبل طلب أي لوح.</p>
+                    <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> مسح الموقع وتحليل التظليل</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> النمذجة المالية وتوقعات الاسترداد</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> دعم التصاريح والربط البيني للمرافق</li>
+                    </ul>
+                    <a href="#contact" class="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors">احجز استشارة <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow p-6 sm:p-8 flex flex-col group">
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mb-5"><svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+                    <h3 class="text-lg font-bold text-dark mb-4">التشغيل والصيانة</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">حافظ على نظامك في ذروة الأداء من خلال تنظيف الألواح الاستباقي، وفحوصات صحة المحولات، والمراقبة عن بعد، والاستجابة للأعطال على مدار الساعة. نحمي استثمارك في الطاقة.</p>
+                    <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> خطط تشغيل وصيانة ربع سنوية وسنوية</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> مراقبة الأداء في الوقت الفعلي</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0"></span> دعم طوارئ على مدار الساعة وإرسال سريع</li>
+                    </ul>
+                    <a href="#contact" class="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors">عرض خطط التشغيل والصيانة <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDER EXPERIENCE SECTION -->
+    <section id="experience" class="bg-dark text-white py-20 lg:py-28 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #22c55e 1px, transparent 0); background-size: 40px 40px;"></div>
+        <div class="absolute top-0 left-0 w-96 h-96 bg-brand-600 rounded-full blur-[180px] opacity-10 pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-72 h-72 bg-brand-400 rounded-full blur-[140px] opacity-8 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+                <div>
+                    <span class="text-brand-400 font-semibold text-sm tracking-widest uppercase">مبنية على الثقة والخبرة</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-3 mb-5 tracking-tight leading-[1.12]">تأسست على سنوات من الخبرة الهندسية واللوجستية</h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-8">قد تكون فيرتسولار اسمًا جديدًا، لكنها مبنية على أساس صلب. يجلب فريقنا عقودًا من الخبرة المشتركة في العمليات وإدارة سلسلة التوريد وتنسيق المشاريع واسعة النطاق عبر قطاعي الطاقة والبنية التحتية.</p>
+                    <p class="text-gray-400 leading-relaxed mb-10">نحن نفهم ما يلزم لتسليم المشاريع المعقدة في الوقت المحدد وضمن الميزانية. من مصادر المكونات من الفئة الأولى من خلال علاقات البائعين الراسخة إلى التنقل في المناظر التنظيمية الإقليمية - تضمن خبرتنا أن استثمارك في الطاقة الشمسية في أيدٍ أمينة منذ اليوم الأول.</p>
+                    <a href="#contact" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-7 py-3.5 rounded-lg transition-all shadow-lg hover:shadow-xl green-glow">اعمل معنا <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-4 sm:gap-5">
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-colors group"><div class="w-11 h-11 bg-brand-600/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-600/35 transition-colors"><svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h4 class="font-bold text-white text-base mb-1.5">تميز العمليات</h4><p class="text-gray-400 text-sm leading-relaxed">سنوات من إدارة العمليات العملية تضمن تنفيذًا سلسًا للمشروع من التخطيط إلى التشغيل.</p></div>
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-colors group"><div class="w-11 h-11 bg-brand-600/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-600/35 transition-colors"><svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 17H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-4"/><polygon points="12,15 17,21 7,21"/></svg></div><h4 class="font-bold text-white text-base mb-1.5">إتقان سلسلة التوريد</h4><p class="text-gray-400 text-sm leading-relaxed">معرفة عميقة بسلاسل التوريد العالمية تضمن مصادر موثوقة للمكونات المتميزة بأسعار تنافسية.</p></div>
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-colors group"><div class="w-11 h-11 bg-brand-600/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-600/35 transition-colors"><svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h4 class="font-bold text-white text-base mb-1.5">تنسيق المشاريع</h4><p class="text-gray-400 text-sm leading-relaxed">سجل حافل في تنسيق المشاريع متعددة الأطراف عبر بيئات إقليمية متنوعة.</p></div>
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-colors group"><div class="w-11 h-11 bg-brand-600/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-600/35 transition-colors"><svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg></div><h4 class="font-bold text-white text-base mb-1.5">خبرة إقليمية</h4><p class="text-gray-400 text-sm leading-relaxed">فهم متعمق للوائح المحلية والظروف المناخية وأسواق الطاقة لتصميم نظام محسن.</p></div>
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-colors group"><div class="w-11 h-11 bg-brand-600/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-600/35 transition-colors"><svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4 4 1 6-5-3-5 3 1-6-4-4 6-1z"/></svg></div><h4 class="font-bold text-white text-base mb-1.5">علاقات البائعين</h4><p class="text-gray-400 text-sm leading-relaxed">شراكات راسخة مع مصنعي وموزعي الفئة الأولى حول العالم لضمان الجودة.</p></div>
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-colors group"><div class="w-11 h-11 bg-brand-600/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-600/35 transition-colors"><svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h4 class="font-bold text-white text-base mb-1.5">الالتزام بالطاقة المتجددة</h4><p class="text-gray-400 text-sm leading-relaxed">شغف حقيقي بالطاقة المستدامة يدفع كل قرار نتخذه وكل نظام نصممه.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 bg-vertsolar-grayBg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-vertsolar-green font-bold tracking-widest mb-3 uppercase text-sm">قاعدة المعرفة</h2>
+                <h3 class="text-3xl lg:text-4xl font-black text-vertsolar-blue font-heading">الأسئلة الشائعة</h3>
+            </div>
+            <div class="space-y-4">
+                <details class="group bg-white rounded-2xl border border-gray-200 shadow-sm [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-gray-900">
+                        <h2 class="font-bold text-lg text-vertsolar-blue">كيف يعمل القياس الصافي في مصر؟</h2>
+                        <span class="relative h-5 w-5 shrink-0 text-vertsolar-green"><svg class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg><svg class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4"/></svg></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">يسمح لك القياس الصافي بربط نظامك الشمسي بالشبكة القومية، مما يحول الشبكة بشكل فعال إلى بطارية افتراضية. عندما تنتج ألواحك كهرباء أكثر مما يستهلكه منشأتك خلال ساعات ذروة الشمس، يتم تصدير الفائض إلى الشبكة، مما يولد أرصدة مالية. في الليل أو خلال الأيام الملبدة بالغيوم، تسحب الكهرباء مرة أخرى من الشبكة. في نهاية دورة الفوترة، تتم محاسبتك فقط على صافي الطاقة المستهلكة. إذا ولدت فائضًا، يتم ترحيل الأرصدة إلى الشهر التالي، وتبلغ ذروتها بتسوية سنوية. تتولى فيرتسولار بسلاسة جميع الموافقات التنظيمية ودراسات تأثير الشبكة والأوراق مع هيئة الطاقة الجديدة والمتجددة (NREA) وشركة توزيع الكهرباء المحلية لضمان الامتثال الكامل.</div>
+                </details>
+                <details class="group bg-white rounded-2xl border border-gray-200 shadow-sm [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-gray-900">
+                        <h2 class="font-bold text-lg text-vertsolar-blue">هل تحتاج الألواح للتنظيف بسبب الغبار في منطقة الشرق الأوسط وشمال إفريقيا؟</h2>
+                        <span class="relative h-5 w-5 shrink-0 text-vertsolar-green"><svg class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg><svg class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4"/></svg></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">نعم، التنظيف المنتظم أمر بالغ الأهمية في منطقة الشرق الأوسط وشمال إفريقيا. يمكن أن يقلل تراكم الغبار والرمال والتلوث - المعروف باسم "الاتساخ" - من كفاءة النظام بنسبة 5-15٪ (وأحيانًا أكثر بعد رياح الخماسين الموسمية) إذا ترك دون إدارة. لمكافحة هذا، توفر فيرتسولار عقود تشغيل وصيانة شاملة مصممة خصيصًا لموقعك المحدد. تشمل هذه العقود التنظيف اليدوي المجدول أو حلول التنظيف الجاف الآلي بالروبوتات بدون ماء للحفاظ على موارد المياه الثمينة. علاوة على ذلك، نحرص حصريًا على توفير ألواح متميزة تتميز بطبقات زجاجية متقدمة مضادة للانعكاس ومقاومة للاتساخ تطرد الغبار بنشاط وتتطلب صيانة أقل تكرارًا مقارنة بالوحدات القياسية.</div>
+                </details>
+                <details class="group bg-white rounded-2xl border border-gray-200 shadow-sm [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-gray-900">
+                        <h2 class="font-bold text-lg text-vertsolar-blue">ما هو العمر الافتراضي والضمان للنظام؟</h2>
+                        <span class="relative h-5 w-5 shrink-0 text-vertsolar-green"><svg class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg><svg class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4"/></svg></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">تركيب الطاقة الشمسية التجاري هو أصل طويل الأجل مصمم ليدوم أكثر من 25 عامًا. نستخدم حصريًا مكونات من الفئة الأولى لضمان أقصى قدر من الموثوقية. تأتي وحدات الطاقة الشمسية الكهروضوئية لدينا مع ضمان منتج قياسي لمدة 12-15 عامًا ضد عيوب التصنيع، مقترنًا بضمان أداء خطي رائد في الصناعة لمدة 25-30 عامًا (يضمن أن الألواح ستظل تنتج 80-84٪ على الأقل من إنتاجها الأصلي في السنة 25). تتمتع محولات السلسلة عادةً بضمان 5-10 سنوات، والذي يمكن تمديده حتى 20 عامًا عند الطلب. بالإضافة إلى ذلك، تحمل هياكل التثبيت المخصصة لدينا ضمانًا لمدة 10 سنوات ضد التدهور الهيكلي، مما يضمن تحمل نظامك للظروف الجوية القاسية.</div>
+                </details>
+                <details class="group bg-white rounded-2xl border border-gray-200 shadow-sm [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-gray-900">
+                        <h2 class="font-bold text-lg text-vertsolar-blue">ما هو العائد النموذجي على الاستثمار (ROI) لنظام الطاقة الشمسية؟</h2>
+                        <span class="relative h-5 w-5 shrink-0 text-vertsolar-green"><svg class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg><svg class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4"/></svg></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">بفضل الإشعاع الشمسي العالي في مصر وارتفاع تعريفات الكهرباء التجارية، فإن العوائد المالية جذابة للغاية. تدفع معظم منشآت الطاقة الشمسية التجارية والصناعية تكاليفها في غضون 3 إلى 5 سنوات. بمجرد أن يسترد النظام تكلفته الأولية، ستستمتع بأكثر من عقدين من الكهرباء المجانية تقريبًا، مما يقلل بشكل كبير من نفقاتك التشغيلية ويحمي عملك من ارتفاع أسعار الطاقة في المستقبل. تقدم فيرتسولار نمذجة مالية مفصلة، بما في ذلك المدخرات المتوقعة وفترات الاسترداد ومعدل العائد الداخلي (IRR)، قبل أي التزام.</div>
+                </details>
+                <details class="group bg-white rounded-2xl border border-gray-200 shadow-sm [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-gray-900">
+                        <h2 class="font-bold text-lg text-vertsolar-blue">ما مقدار المساحة المطلوبة لتركيب طاقة شمسية تجارية؟</h2>
+                        <span class="relative h-5 w-5 shrink-0 text-vertsolar-green"><svg class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg><svg class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4"/></svg></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">كقاعدة عامة، تحتاج إلى حوالي 10 أمتار مربعة من مساحة السطح غير المظللة لكل كيلوواط ذروة (kWp) من سعة الطاقة الشمسية المركبة. على سبيل المثال، سيتطلب نظام بقدرة 100 كيلوواط ذروة حوالي 1000 متر مربع. خلال تقييمنا الأولي للموقع، يستخدم فريقنا الهندسي نمذجة ثلاثية الأبعاد متقدمة وتحليل التظليل لتقييم اتجاه سقف منشأتك وسلامته الهيكلية وملامح العوائق، مما يضمن تصميم النظام الأكثر كفاءة في استخدام المساحة والأعلى إنتاجية لمنشأتك.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-vertsolar-blue clip-path-slant z-0" style="clip-path: polygon(0 0, 100% 0, 0 100%, 0 40%);"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-vertsolar-darkBlue rounded-[3rem] p-8 lg:p-16 shadow-[0_20px_50px_rgba(0,36,75,0.5)] overflow-hidden relative border border-white/10">
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-vertsolar-green rounded-full -translate-x-1/2 translate-y-1/2 opacity-20 blur-2xl"></div>
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <div>
+                        <h2 class="text-vertsolar-yellow font-bold uppercase tracking-widest mb-4">اطلب عرضًا</h2>
+                        <h3 class="text-4xl lg:text-6xl font-black text-white mb-6 font-heading">هل أنت مستعد للتحول <br>إلى <span class="text-vertsolar-green">الشمس؟</span></h3>
+                        <p class="text-gray-400 mb-12 max-w-md">اتصل بفريقنا الهندسي للحصول على تقييم أولي مجاني للموقع ودراسة جدوى مالية.</p>
+                        <div class="space-y-8">
+                            <div class="flex items-center gap-6 group cursor-pointer"><div class="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-vertsolar-green group-hover:bg-vertsolar-green group-hover:text-white transition-all"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div><p class="text-gray-400 text-sm font-semibold mb-1">المقر الرئيسي</p><p class="text-white font-bold text-lg">مدينة الشيخ زايد، الجيزة، مصر</p></div></div>
+                            <div class="flex items-center gap-6 group cursor-pointer"><div class="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-vertsolar-green group-hover:bg-vertsolar-green group-hover:text-white transition-all"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div><p class="text-gray-400 text-sm font-semibold mb-1">البريد الإلكتروني للفريق الهندسي</p><p class="text-white font-bold text-lg">proposals@vertsolar.com</p></div></div>
+                            <div class="flex items-center gap-6 group cursor-pointer"><div class="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-vertsolar-green group-hover:bg-vertsolar-green group-hover:text-white transition-all"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div><div><p class="text-gray-400 text-sm font-semibold mb-1">الخط الساخن المباشر</p><p class="text-white font-bold text-lg">+20 100 234 5678</p></div></div>
+                        </div>
+                    </div>
+                    <form class="bg-white rounded-[2rem] p-8 lg:p-10 shadow-2xl relative z-10">
+                        <h4 class="text-2xl font-black text-vertsolar-blue mb-8">نموذج طلب هندسي</h4>
+                        <div class="grid grid-cols-2 gap-6 mb-6">
+                            <div class="col-span-2 sm:col-span-1"><label class="block text-xs font-bold text-gray-500 uppercase mb-2">الشركة / الاسم الكامل</label><input type="text" placeholder="محمد أحمد" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 focus:ring-2 focus:ring-vertsolar-green focus:border-transparent outline-none transition"></div>
+                            <div class="col-span-2 sm:col-span-1"><label class="block text-xs font-bold text-gray-500 uppercase mb-2">رقم الهاتف</label><input type="tel" placeholder="+20 1xxxxxxxxx" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 focus:ring-2 focus:ring-vertsolar-green focus:border-transparent outline-none transition"></div>
+                        </div>
+                        <div class="mb-6"><label class="block text-xs font-bold text-gray-500 uppercase mb-2">البريد الإلكتروني</label><input type="email" placeholder="contact@company.com" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 focus:ring-2 focus:ring-vertsolar-green focus:border-transparent outline-none transition"></div>
+                        <div class="mb-6"><label class="block text-xs font-bold text-gray-500 uppercase mb-2">الحل المطلوب</label><div class="relative"><select class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 focus:ring-2 focus:ring-vertsolar-green focus:border-transparent outline-none appearance-none transition"><option>محطة طاقة شمسية تجارية / صناعية</option><option>عداد صافي سكني</option><option>ضخ مياه بالطاقة الشمسية (زراعي)</option><option>تشغيل وصيانة (O&M)</option><option>خارج الشبكة / تخزين بطاريات</option></select><div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-4 text-gray-500"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg></div></div></div>
+                        <div class="mb-8"><label class="block text-xs font-bold text-gray-500 uppercase mb-2">تفاصيل المشروع والموقع</label><textarea rows="3" placeholder="مثال: سقف مصنع في العاشر من رمضان، حوالي 2000م²..." class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 focus:ring-2 focus:ring-vertsolar-green focus:border-transparent outline-none transition resize-none"></textarea></div>
+                        <button class="w-full py-5 bg-vertsolar-green text-white font-black text-xl rounded-xl hover:bg-vertsolar-blue transition-all transform active:scale-[0.98] shadow-lg shadow-vertsolar-green/30 flex justify-center items-center gap-2">إرسال الطلب <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5l-7 7m0 0l7 7m-7-7h18"/></svg></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEGA FOOTER -->
+    <footer class="bg-[#001226] pt-24 pb-12 border-t-4 border-vertsolar-green text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+                <div class="lg:col-span-4">
+                    <a href="#home" class="flex items-center gap-3 mb-6"><div class="w-10 h-10 bg-vertsolar-green rounded-lg flex items-center justify-center"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg></div><span class="text-3xl font-black text-white tracking-tighter font-heading">Vert<span class="text-vertsolar-green">solar</span></span></a>
+                    <p class="text-gray-400 leading-relaxed text-sm mb-8 pr-4">فيرتسولار لحلول وهندسة الطاقة الشمسية. نقود تحول الشرق الأوسط إلى الطاقة المتجددة من خلال هندسة لا تقبل المساومة، وتنفيذ هندسة ومشتريات وبناء عالي الإنتاجية، وبروتوكولات صيانة قوية.</p>
+                    <div class="flex gap-4">
+                        <a href="" class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-white hover:bg-vertsolar-green transition shadow-sm"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="" class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-white hover:bg-vertsolar-green transition shadow-sm"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                        <a href="https://www.instagram.com/vertsolarco/" class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-white hover:bg-vertsolar-green transition shadow-sm"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    </div>
+                </div>
+                <div class="lg:col-span-2">
+                    <h5 class="text-white font-bold uppercase text-sm mb-6 tracking-wider">الشركة</h5>
+                    <ul class="space-y-4">
+                        <li><a href="#about" class="text-gray-400 hover:text-vertsolar-green text-sm transition flex items-center gap-2"><span class="w-1 h-1 bg-vertsolar-green rounded-full"></span> من نحن</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-vertsolar-green text-sm transition flex items-center gap-2"><span class="w-1 h-1 bg-vertsolar-green rounded-full"></span> محفظة المشاريع</a></li>
+                        <li><a href="#process" class="text-gray-400 hover:text-vertsolar-green text-sm transition flex items-center gap-2"><span class="w-1 h-1 bg-vertsolar-green rounded-full"></span> عملية EPC</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-vertsolar-green text-sm transition flex items-center gap-2"><span class="w-1 h-1 bg-vertsolar-green rounded-full"></span> معلومات الاستدامة</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-vertsolar-green text-sm transition flex items-center gap-2"><span class="w-1 h-1 bg-vertsolar-green rounded-full"></span> وظائف</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-3">
+                    <h5 class="text-white font-bold uppercase text-sm mb-6 tracking-wider">الحلول الهندسية</h5>
+                    <ul class="space-y-4">
+                        <li><a href="#services" class="text-gray-400 hover:text-vertsolar-green text-sm transition flex items-center gap-2"><span class="w-1 h-1 bg-vertsolar-yellow rounded-full"></span> طاقة شمسية تجارية وصناعية</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-vertsolar-green text-sm transition flex items-center gap-2"><span class="w-1 h-1 bg-vertsolar-yellow rounded-full"></span> عداد صافي سكني</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-vertsolar-green text-sm transition flex items-center gap-2"><span class="w-1 h-1 bg-vertsolar-yellow rounded-full"></span> ضخ مياه بالطاقة الشمسية</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-vertsolar-green text-sm transition flex items-center gap-2"><span class="w-1 h-1 bg-vertsolar-yellow rounded-full"></span> صيانة المحطات (O&M)</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-vertsolar-green text-sm transition flex items-center gap-2"><span class="w-1 h-1 bg-vertsolar-yellow rounded-full"></span> تخزين الطاقة (BESS)</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-3">
+                    <h5 class="text-white font-bold uppercase text-sm mb-6 tracking-wider">رؤى الصناعة</h5>
+                    <p class="text-gray-400 text-sm mb-6">اشترك في نشرتنا الهندسية للحصول على تحديثات حول تغييرات التعريفات المصرية وتكنولوجيا الطاقة الشمسية.</p>
+                    <form class="relative"><input type="email" placeholder="البريد الإلكتروني" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm focus:border-vertsolar-green focus:ring-1 focus:ring-vertsolar-green outline-none text-white transition"><button type="button" class="absolute left-1 top-1 bottom-1 bg-vertsolar-green text-white px-4 rounded-lg hover:bg-vertsolar-greenHover transition font-bold text-xs uppercase tracking-wider">اشتراك</button></form>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">© 2026 فيرتسولار لحلول وهندسة الطاقة الشمسية. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-6">
+                    <a href="terms(ar).html" class="text-gray-500 hover:text-white text-sm transition">الشروط والأحكام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP FAB -->
+    <a href="#home" class="fixed bottom-8 left-8 w-14 h-14 bg-vertsolar-green text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-vertsolar-blueHover transition-all transform hover:-translate-y-2 z-40 group border-2 border-transparent hover:border-vertsolar-green">
+        <svg class="w-6 h-6 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </a>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+                nav.classList.replace('py-4', 'py-0');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.replace('py-0', 'py-4');
+            }
+        });
+    </script>
+    <script>
+        function togglePackage(pkg) {
+            const el = document.getElementById('pkg-' + pkg);
+            const icon = document.getElementById('icon-' + pkg);
+            document.querySelectorAll('[id^="pkg-"]').forEach(e => { if (e !== el) e.classList.add('hidden'); });
+            document.querySelectorAll('[id^="icon-"]').forEach(i => { if (i !== icon) i.style.transform = 'rotate(0deg)'; });
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                el.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -774,17 +774,55 @@
     </script>
 
 <script>
-    // Smooth redirect with fade-out effect after 5 seconds
-    setTimeout(function() {
-        // Add fade-out class to body
+    // Redirect as soon as Three.js is initialized and rendering
+    let sceneReady = false;
+    let redirectTriggered = false;
+    
+    function redirectToHome() {
+        if (redirectTriggered) return;
+        redirectTriggered = true;
+        
         document.body.style.transition = 'opacity 0.5s ease';
         document.body.style.opacity = '0';
         
-        // Redirect after fade animation completes
         setTimeout(function() {
             window.location.href = 'home(en).html';
-        }, 400); // Wait for fade animation (0.5 seconds)
-    }, 1500);
-</script>l
+        }, 500);
+    }
+    
+    // Check if canvas is actually rendering (not just blank)
+    function isSceneActive() {
+        const canvas = document.getElementById('three-canvas');
+        if (!canvas) return false;
+        
+        // Try to detect if WebGL context is active and rendering
+        try {
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            if (gl) {
+                // Check if context is not lost and has been drawn to
+                return !gl.isContextLost();
+            }
+        } catch(e) {}
+        return false;
+    }
+    
+    // Start checking immediately
+    const readyCheck = setInterval(function() {
+        if (isSceneActive()) {
+            sceneReady = true;
+            clearInterval(readyCheck);
+            // Redirect after just 1 second of showing the scene
+            setTimeout(redirectToHome, 1000);
+        }
+    }, 100);
+    
+    // Fallback - redirect after 3 seconds max
+    setTimeout(function() {
+        if (!redirectTriggered) {
+            clearInterval(readyCheck);
+            redirectToHome();
+        }
+    }, 3000);
+</script>
 </body>
 </html>
